@@ -1,251 +1,196 @@
-/**
-* Template Name: DevFolio
-* Template URL: https://bootstrapmade.com/devfolio-bootstrap-portfolio-html-template/
-* Updated: Aug 07 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
+/* main.js — cleaned & consolidated for septiahadi.github.io
+   Cleanup: removed duplicate inits, dead listeners, and page-agnostic clutter.
+   Kept: header shadow, mobile nav, AOS, GLightbox, Typed.js, Isotope filter+sort,
+         activity scroller, scroll-top, preloader, footer year, light scrollspy.
 */
 
-(function() {
-  "use strict";
+/* ===== Helpers ===== */
+const $  = (sel, ctx = document) => ctx.querySelector(sel);
+const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
-  /**
-   * Apply .scrolled class to the body as the page is scrolled down
-   */
-  function toggleScrolled() {
-    const selectBody = document.querySelector('body');
-    const selectHeader = document.querySelector('#header');
-    if (!selectHeader.classList.contains('scroll-up-sticky') && !selectHeader.classList.contains('sticky-top') && !selectHeader.classList.contains('fixed-top')) return;
-    window.scrollY > 100 ? selectBody.classList.add('scrolled') : selectBody.classList.remove('scrolled');
-  }
+/* 1) Header shadow on scroll (.scrolled on <body>) */
+(function initScrolledHeader() {
+  const header = $("#header");
+  if (!header) return;
+  const apply = () => {
+    if (window.scrollY > 100) document.body.classList.add("scrolled");
+    else document.body.classList.remove("scrolled");
+  };
+  window.addEventListener("load", apply, { once: true });
+  document.addEventListener("scroll", apply, { passive: true });
+})();
 
-  document.addEventListener('scroll', toggleScrolled);
-  window.addEventListener('load', toggleScrolled);
+/* 2) Mobile nav toggle */
+(function initMobileNav() {
+  const btn = $(".mobile-nav-toggle");
+  const nav = $("#navmenu");
+  if (!btn || !nav) return;
 
-  /**
-   * Mobile nav toggle
-   */
-  const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
-
-  function mobileNavToogle() {
-    document.querySelector('body').classList.toggle('mobile-nav-active');
-    mobileNavToggleBtn.classList.toggle('bi-list');
-    mobileNavToggleBtn.classList.toggle('bi-x');
-  }
-  mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
-
-  /**
-   * Hide mobile nav on same-page/hash links
-   */
-  document.querySelectorAll('#navmenu a').forEach(navmenu => {
-    navmenu.addEventListener('click', () => {
-      if (document.querySelector('.mobile-nav-active')) {
-        mobileNavToogle();
-      }
-    });
-
-  });
-
-  /**
-   * Toggle mobile nav dropdowns
-   */
-  document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
-    navmenu.addEventListener('click', function(e) {
-      e.preventDefault();
-      this.parentNode.classList.toggle('active');
-      this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
-      e.stopImmediatePropagation();
-    });
-  });
-
-  /**
-   * Preloader
-   */
-  const preloader = document.querySelector('#preloader');
-  if (preloader) {
-    window.addEventListener('load', () => {
-      preloader.remove();
-    });
-  }
-
-  /**
-   * Scroll top button
-   */
-  let scrollTop = document.querySelector('.scroll-top');
-
-  function toggleScrollTop() {
-    if (scrollTop) {
-      window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
+  const icon = btn.querySelector("i");
+  const toggle = () => {
+    const active = document.body.classList.toggle("mobile-nav-active");
+    btn.setAttribute("aria-expanded", active ? "true" : "false");
+    if (icon) {
+      icon.classList.toggle("bi-list", !active);
+      icon.classList.toggle("bi-x", active);
     }
-  }
-  scrollTop.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+  };
+  btn.addEventListener("click", toggle);
+
+  // Close on menu link click (for hash navigation)
+  $$("#navmenu a").forEach(a => {
+    a.addEventListener("click", () => {
+      if (document.body.classList.contains("mobile-nav-active")) toggle();
     });
   });
+})();
 
-  window.addEventListener('load', toggleScrollTop);
-  document.addEventListener('scroll', toggleScrollTop);
+/* 3) AOS (if loaded) */
+(function initAOS() {
+  if (typeof AOS === "undefined") return;
+  AOS.init({ duration: 600, easing: "ease-out", once: true });
+})();
 
-  /**
-   * Animation on scroll function and init
-   */
-  function aosInit() {
-    AOS.init({
-      duration: 600,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false
-    });
-  }
-  window.addEventListener('load', aosInit);
+/* 4) GLightbox (if .glightbox exists) */
+(function initLightbox() {
+  if (typeof GLightbox === "undefined") return;
+  if (!$(".glightbox")) return;
+  GLightbox({ selector: ".glightbox", touchNavigation: true });
+})();
 
-  /**
-   * Init typed.js
-   */
-  const selectTyped = document.querySelector('.typed');
-  if (selectTyped) {
-    let typed_strings = selectTyped.getAttribute('data-typed-items');
-    typed_strings = typed_strings.split(',');
-    new Typed('.typed', {
-      strings: typed_strings,
-      loop: true,
-      typeSpeed: 100,
-      backSpeed: 50,
-      backDelay: 2000
-    });
-  }
-
-  /**
-   * Animate the skills items on reveal
-   */
-  let skillsAnimation = document.querySelectorAll('.skills-animation');
-  skillsAnimation.forEach((item) => {
-    new Waypoint({
-      element: item,
-      offset: '80%',
-      handler: function(direction) {
-        let progress = item.querySelectorAll('.progress .progress-bar');
-        progress.forEach(el => {
-          el.style.width = el.getAttribute('aria-valuenow') + '%';
-        });
-      }
-    });
+/* 5) Typed.js (index hero only) */
+(function initTyped() {
+  if (typeof Typed === "undefined") return;
+  const el = $(".typed");
+  if (!el) return;
+  const items = (el.getAttribute("data-typed-items") || "")
+    .split(",")
+    .map(s => s.trim())
+    .filter(Boolean);
+  if (!items.length) return;
+  /* eslint-disable no-new */
+  new Typed(".typed", {
+    strings: items,
+    typeSpeed: 60,
+    backSpeed: 30,
+    backDelay: 1400,
+    loop: true
   });
+})();
 
-  /**
-   * Initiate Pure Counter
-   */
-  new PureCounter();
+/* 6) Portfolio filter + SORT newest-first (Isotope) — index only */
+(function initPortfolio() {
+  const grid = $("#portfolio-grid");
+  if (!grid || typeof Isotope === "undefined") return;
 
-  /**
-   * Initiate glightbox
-   */
-  const glightbox = GLightbox({
-    selector: '.glightbox'
-  });
+  const run = () => {
+    const iso = new Isotope(grid, {
+      itemSelector: ".portfolio-item",
+      layoutMode: "fitRows",
+      getSortData: {
+        date: el => el.getAttribute("data-date") || ""  // expects YYYY-MM-DD
+      },
+      sortBy: "date",
+      sortAscending: false
+    });
 
-  /**
-   * Init isotope layout and filters
-   */
-  document.querySelectorAll('.isotope-layout').forEach(function(isotopeItem) {
-    let layout = isotopeItem.getAttribute('data-layout') ?? 'masonry';
-    let filter = isotopeItem.getAttribute('data-default-filter') ?? '*';
-    let sort = isotopeItem.getAttribute('data-sort') ?? 'original-order';
+    // Bind filters (support both <li> and .filter-btn)
+    const buttons = $$(".portfolio-filters .filter-btn, .portfolio-filters li");
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const filter = btn.getAttribute("data-filter") || "*";
+        iso.arrange({ filter, sortBy: "date", sortAscending: false });
 
-    let initIsotope;
-    imagesLoaded(isotopeItem.querySelector('.isotope-container'), function() {
-      initIsotope = new Isotope(isotopeItem.querySelector('.isotope-container'), {
-        itemSelector: '.isotope-item',
-        layoutMode: layout,
-        filter: filter,
-        sortBy: sort
+        // Active state
+        buttons.forEach(el => el.classList.remove("filter-active"));
+        btn.classList.add("filter-active");
       });
     });
 
-    isotopeItem.querySelectorAll('.isotope-filters li').forEach(function(filters) {
-      filters.addEventListener('click', function() {
-        isotopeItem.querySelector('.isotope-filters .filter-active').classList.remove('filter-active');
-        this.classList.add('filter-active');
-        initIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
-        if (typeof aosInit === 'function') {
-          aosInit();
-        }
-      }, false);
-    });
+    // Initial arrange to ensure sorted on load
+    iso.arrange({ filter: "*", sortBy: "date", sortAscending: false });
+  };
 
-  });
-
-  /**
-   * Frequently Asked Questions Toggle
-   */
-  document.querySelectorAll('.faq-item h3, .faq-item .faq-toggle').forEach((faqItem) => {
-    faqItem.addEventListener('click', () => {
-      faqItem.parentNode.classList.toggle('faq-active');
-    });
-  });
-
-  /**
-   * Init swiper sliders
-   */
-  function initSwiper() {
-    document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
-      let config = JSON.parse(
-        swiperElement.querySelector(".swiper-config").innerHTML.trim()
-      );
-
-      if (swiperElement.classList.contains("swiper-tab")) {
-        initSwiperWithCustomPagination(swiperElement, config);
-      } else {
-        new Swiper(swiperElement, config);
-      }
-    });
+  if (typeof imagesLoaded !== "undefined") {
+    imagesLoaded(grid, run);
+  } else {
+    run();
   }
+})();
 
-  window.addEventListener("load", initSwiper);
+/* 7) Activity horizontal scroller — index only */
+(function initActivityScroller() {
+  const scroller = $(".activity-scroller");
+  const prev = $(".activity-prev");
+  const next = $(".activity-next");
+  if (!scroller || !prev || !next) return;
 
-  /**
-   * Correct scrolling position upon page load for URLs containing hash links.
-   */
-  window.addEventListener('load', function(e) {
-    if (window.location.hash) {
-      if (document.querySelector(window.location.hash)) {
-        setTimeout(() => {
-          let section = document.querySelector(window.location.hash);
-          let scrollMarginTop = getComputedStyle(section).scrollMarginTop;
-          window.scrollTo({
-            top: section.offsetTop - parseInt(scrollMarginTop),
-            behavior: 'smooth'
-          });
-        }, 100);
-      }
-    }
+  const step = () => Math.max(200, Math.round(scroller.clientWidth * 0.9));
+  prev.addEventListener("click", () => scroller.scrollBy({ left: -step(), behavior: "smooth" }));
+  next.addEventListener("click", () => scroller.scrollBy({ left:  step(), behavior: "smooth" }));
+
+  // Keyboard a11y
+  scroller.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") scroller.scrollBy({ left:  step(), behavior: "smooth" });
+    if (e.key === "ArrowLeft")  scroller.scrollBy({ left: -step(), behavior: "smooth" });
   });
+})();
 
-  /**
-   * Navmenu Scrollspy
-   */
-  let navmenulinks = document.querySelectorAll('.navmenu a');
+/* 8) Scroll-top button */
+(function initScrollTop() {
+  const btn = $("#scroll-top") || $(".scroll-top");
+  if (!btn) return;
+  const onScroll = () => {
+    const active = window.scrollY > 100;
+    btn.classList.toggle("active", active);
+  };
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+  window.addEventListener("load", onScroll, { once: true });
+  document.addEventListener("scroll", onScroll, { passive: true });
+})();
 
-  function navmenuScrollspy() {
-    navmenulinks.forEach(navmenulink => {
-      if (!navmenulink.hash) return;
-      let section = document.querySelector(navmenulink.hash);
-      if (!section) return;
-      let position = window.scrollY + 200;
-      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-        document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
-        navmenulink.classList.add('active');
-      } else {
-        navmenulink.classList.remove('active');
-      }
-    })
+/* 9) Preloader fade + remove — index only */
+(function killPreloader() {
+  const pre = $("#preloader");
+  if (!pre) return;
+  window.addEventListener("load", () => {
+    pre.style.opacity = "0";
+    setTimeout(() => pre.remove(), 400);
+  }, { once: true });
+})();
+
+/* 10) Footer year (explicit spans + index copyright placeholder) */
+(function setYear() {
+  const year = String(new Date().getFullYear());
+  $$("#year").forEach(node => (node.textContent = year));
+  const copyrightSpan = document.querySelector("footer .copyright span");
+  if (copyrightSpan && !copyrightSpan.textContent.trim()) {
+    copyrightSpan.textContent = year;
   }
-  window.addEventListener('load', navmenuScrollspy);
-  document.addEventListener('scroll', navmenuScrollspy);
+})();
 
+/* 11) Lightweight scrollspy (in-page anchors) */
+(function initScrollspy() {
+  const links = $$("#navmenu a").filter(a => a.hash && a.hash.startsWith("#"));
+  if (!links.length) return;
+
+  const sections = links.map(a => document.querySelector(a.hash)).filter(Boolean);
+  if (!sections.length) return;
+
+  const onScroll = () => {
+    const pos = window.scrollY + 200;
+    let activeId = null;
+    sections.forEach(sec => {
+      const top = sec.offsetTop;
+      const bottom = top + sec.offsetHeight;
+      if (pos >= top && pos <= bottom) activeId = "#" + sec.id;
+    });
+    links.forEach(a => a.classList.toggle("active", a.hash === activeId));
+  };
+
+  window.addEventListener("load", onScroll, { once: true });
+  document.addEventListener("scroll", onScroll, { passive: true });
 })();

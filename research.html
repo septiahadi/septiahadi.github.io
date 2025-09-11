@@ -1,0 +1,110 @@
+<!-- Cleanup: unified head/header/footer, minimal vendors, consistent spacing, kept visual parity -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta dasar -->
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Research Lab - Septia Hadi</title>
+  <meta name="description" content="Synthetic Lab: geoscience x data x AI — experiments, datasets, and reproducible workflows by Septia Hadi.">
+  <meta name="author" content="Septia Hadi Wardana">
+  <link rel="canonical" href="https://septiahadi.github.io/research.html">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/favicon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;500;600&family=Raleway:wght@400;600;700&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>section{scroll-margin-top:80px}</style>
+</head>
+
+<body class="research-page">
+  <!-- ============================ HEADER ============================ -->
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center" aria-label="Go to Home">
+        <h1 class="sitename mb-0">Septia Hadi</h1>
+      </a>
+      <nav id="navmenu" class="navmenu" aria-label="Primary">
+        <ul>
+          <li><a href="index.html#hero">Home</a></li>
+          <li><a href="index.html#portfolio">Work</a></li>
+          <li><a href="library.html">Library</a></li>
+          <li><a href="research.html" class="active" aria-current="page">Research Lab</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+        <button class="mobile-nav-toggle d-xl-none" aria-label="Toggle navigation" aria-expanded="false">
+          <i class="bi bi-list"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============================== MAIN ============================== -->
+  <main class="main">
+
+    <!-- =========================== RESEARCH LAB ============================ -->
+    <section id="research" class="section" style="padding-top:32px; padding-bottom:32px;">
+      <div class="container">
+        <div class="card shadow-sm border rounded-3 p-4 p-md-5 my-2">
+          <div class="row align-items-center g-4">
+            <div class="col-12 col-lg-6">
+              <figure class="lab-figure mb-0">
+                <img src="assets/img/working-space-2.jpg" alt="Research Lab — visual cover" class="img-fluid w-100 rounded-4 shadow-sm" loading="lazy">
+              </figure>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="lab-copy">
+                <h2>Research Lab</h2>
+                <p>
+                  Synthetic is my digital workspace.
+                  A place where I explore geoscience, data, visualization and AI. Here I publish experiments, share dataset, and document workflows, aiming for reproducible and transparent research.
+                </p>
+                <div class="d-flex flex-wrap gap-2">
+                  <a href="research.html" class="btn btn-dark btn-lg">Soon</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- .card -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer id="footer" class="footer accent-background">
+    <div class="container text-center">
+      <div class="social-links d-flex justify-content-center mb-3">
+<a href="https://www.behance.net/septiahadi" target="_blank" rel="noopener" aria-label="Behance"><i class="bi bi-behance" aria-hidden="true"></i></a>
+        <a href="https://github.com/septiahadi" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
+        <a href="https://medium.com/@septiahadi" target="_blank" rel="noopener" aria-label="Medium"><i class="bi bi-medium" aria-hidden="true"></i></a>
+        <a href="https://www.researchgate.net/profile/Septia-Hadi-Wardana" target="_blank" rel="noopener" aria-label="ResearchGate"><i class="bi bi-mortarboard" aria-hidden="true"></i></a>
+        <a href="https://www.linkedin.com/in/septiahadi" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/septiahadi_" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a>      </div>
+      <hr class="my-3" style="border-color:rgba(181,181,181,.2);">
+      <p class="small mb-0">© 2024 - <span id="year"></span> <strong>Synthetic Lab</strong> · All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <!-- Vendor JS -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+
+  <!-- Main JS global -->
+  <script src="assets/js/main.js" defer></script>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
+</body>
+</html>

@@ -1,56 +1,43 @@
-
-/* ============================================================================
-   main.css — cleaned & annotated (no visual changes)
-   - Normalized whitespace
-   - Added section banners for quick navigation
-   - Kept all values (colors, fonts, animations) intact
-   - Consolidated duplicate `.hero p {}` into one using the last-declared values
-   Edit guide:
-   - Tweak typography via :root vars only if needed (--default-font, --heading-font, --nav-font)
-   - Keep section banners to quickly find related rules
-============================================================================ */
-/* ============================================================================
-   DevFolio – main.css (Slim, integrated for index.html)
-   Goal:
-   - Keep visuals identical; just clean up, dedupe, and align with index.html.
-   - Move inline styles from index.html into here.
-   - Remove sections not used on index.html (services/resume/faq/testimonials/etc.).
-   - Keep tokens & core layout so future pages can reuse.
-   ============================================================================ */
-
-/* ---------------------------------------------------------------------------
-   Template metadata (kept verbatim)
---------------------------------------------------------------------------- */
-/**
-* Template Name: DevFolio
-* Template URL: https://bootstrapmade.com/devfolio-bootstrap-portfolio-html-template/
-* Updated: Aug 07 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
+/*
+  CSS Cleanup Summary:
+  - Removed: legacy sections (services/resume/faq/testimonials/counters/pricing/blog), slider/demo, footer lama, button varian tak terpakai, utilities eksperimental.
+  - Kept: global tokens, header, nav (desktop/mobile), hero, portfolio grid + filters, cards, section-title, scroll-top, preloader, footer, minor utilities.
+  - Fonts: Roboto 300/400/500/700; Poppins 400/500/600; Space Grotesk 300–700.
+  - Libraries aktif: Bootstrap, Bootstrap Icons, AOS, GLightbox, Isotope, imagesLoaded, Typed.js.
+  - Visual parity: required; nilai token ditarik dari tampilan index saat ini.
 */
 
 /* ============================================================================
-   0) GLOBAL VARIABLES & TOKENS
+   0) TOKENS
 ============================================================================ */
 :root {
-  /* Fonts */
-  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Space Grotesk", sans-serif;
-  --nav-font: "Poppins", sans-serif;
+  /* Colors */
+  --color-bg: #e2e2e2;            /* page/section background (light) */
+  --color-bg-alt: #060606;        /* dark hero bg */
+  --color-text: #bababa;          /* body text default */
+  --color-heading: #0a090f;       /* headings */
+  --color-accent: #3071e9;        /* primary accent */
+  --color-surface: #ffffff;       /* cards/surfaces */
+  --color-contrast: #ffffff;      /* text on dark/accent */
 
-  /* Global Colors */
+  /* Radii & shadows */
+  --radius-lg: 1rem;
+  --shadow-md: 0 10px 24px rgba(0,0,0,.07);
 
-/* ============================================================================
-   8) SECTIONS (GENERIC)
-============================================================================ */
-  --background-color: #e2e2e2; /* Page & section backgrounds */
-  --default-color: #bababa;   /* Body text */
-  --heading-color: #0a090f;   /* Headings */
-  --accent-color: #3071e9;    /* Brand accent (links, buttons) */
-  --surface-color: #ffffff;   /* Card/contained surfaces */
-  --contrast-color: #ffffff;  /* Text on dark/accent backgrounds */
+  /* Rhythm */
+  --section-pad: 30px;
+  --gap-card: 1rem;
+  --gap-body: .25rem;
 
-  /* Nav Colors */
+  /* Back-compat for older rules */
+  --background-color: var(--color-bg);
+  --default-color: var(--color-text);
+  --heading-color: var(--color-heading);
+  --accent-color: var(--color-accent);
+  --surface-color: var(--color-surface);
+  --contrast-color: var(--color-contrast);
+
+  /* Nav */
   --nav-color: #ffffff;
   --nav-hover-color: #ffffff;
   --nav-mobile-background-color: #ffffff;
@@ -58,17 +45,16 @@
   --nav-dropdown-color: #212529;
   --nav-dropdown-hover-color: #0078ff;
 
-  /* Behavior */
   scroll-behavior: smooth;
 }
 
-/* Contextual Presets */
+/* Contextual backgrounds */
 .light-background {
   --background-color: #f9f9f9;
   --surface-color: #ffffff;
 }
 .dark-background {
-  --background-color: #060606;
+  --background-color: var(--color-bg-alt);
   --default-color: #ffffff;
   --heading-color: #ffffff;
   --surface-color: #252525;
@@ -86,26 +72,41 @@
 /* ============================================================================
    1) GLOBAL BASICS
 ============================================================================ */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
 body {
   color: var(--default-color);
   background-color: var(--background-color);
-  font-family: var(--default-font);
-}
-
-a {
-  color: var(--accent-color);
-  text-decoration: none;
-  transition: 0.3s;
-}
-a:hover {
-  color: color-mix(in srgb, var(--accent-color), transparent 25%);
-  text-decoration: none;
+  font-family: "Roboto", system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans","Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol","Noto Color Emoji";
+  line-height: 1.6;
 }
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--heading-color);
-  font-family: var(--heading-font);
+  font-family: "Space Grotesk", sans-serif;
+  margin-top: 0;
 }
+
+/* Links */
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color .3s ease;
+}
+a:hover { color: color-mix(in srgb, var(--accent-color), transparent 25%); }
+
+/* Focus visibility */
+:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent-color), transparent 0%);
+  outline-offset: 2px;
+}
+
+/* Heading → paragraph rhythm */
+h1 + p, h2 + p, h3 + p { margin-top: var(--gap-body); }
 
 /* ============================================================================
    2) HEADER
@@ -114,21 +115,23 @@ h1, h2, h3, h4, h5, h6 {
   --background-color: #000000;
   --default-color: #ffffff;
   --heading-color: #ffffff;
+
   color: var(--default-color);
   background-color: var(--background-color);
   padding: 15px 0;
-  transition: all 0.5s;
+  transition: all .5s;
   z-index: 997;
 }
 .header .logo { line-height: 1; }
 .header .logo img { max-height: 32px; margin-right: 8px; }
 .header .logo h1 { font-size: 30px; margin: 0; font-weight: 700; color: var(--heading-color); }
-.scrolled .header { box-shadow: 0px 0 18px rgba(0, 0, 0, 0.1); }
+.scrolled .header { box-shadow: 0 0 18px rgba(0, 0, 0, 0.1); }
 
 /* ============================================================================
-   3) NAVIGATION
+   3) NAVIGATION (desktop & mobile)
+   Safelist states to avoid purge: .active, .show, .open, .collapsed
 ============================================================================ */
-/* Desktop Navigation */
+/* Desktop */
 @media (min-width: 1200px) {
   .navmenu { padding: 0; }
   .navmenu ul { margin: 0; padding: 0; display: flex; list-style: none; align-items: center; }
@@ -140,28 +143,28 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--nav-color);
     font-size: 15px;
     padding: 0 2px;
-    font-family: var(--nav-font);
+    font-family: "Poppins", sans-serif;
     font-weight: 400;
     display: flex;
     align-items: center;
     justify-content: space-between;
     white-space: nowrap;
-    transition: 0.3s;
+    transition: .3s;
     position: relative;
   }
-  .navmenu a i, .navmenu a:focus i { font-size: 12px; line-height: 0; margin-left: 5px; transition: 0.3s; }
+  .navmenu a i, .navmenu a:focus i { font-size: 12px; line-height: 0; margin-left: 5px; transition: .3s; }
 
   .navmenu>ul>li>a:before {
     content: "";
     position: absolute;
-    width: 100%;
     height: 2px;
     bottom: -6px;
     left: 0;
     background-color: var(--nav-hover-color);
     visibility: hidden;
-    width: 0px;
-    transition: all 0.3s ease-in-out 0s;
+    width: 0;
+    transition: all .3s ease-in-out;
+    right: 0;
   }
   .navmenu a:hover:before,
   .navmenu li:hover>a:before,
@@ -171,37 +174,38 @@ h1, h2, h3, h4, h5, h6 {
   .navmenu .active:focus { color: var(--nav-hover-color); }
 }
 
-/* Mobile Navigation */
+/* Mobile */
 @media (max-width: 1199px) {
-  .mobile-nav-toggle { color: var(--nav-color); font-size: 28px; line-height: 0; margin-right: 10px; cursor: pointer; transition: color 0.3s; }
+  .mobile-nav-toggle { color: var(--nav-color); font-size: 28px; line-height: 0; margin-right: 10px; cursor: pointer; transition: color .3s; }
   .navmenu { padding: 0; z-index: 9997; }
   .navmenu ul {
     display: none; list-style: none; position: absolute; inset: 60px 20px 20px 20px;
     padding: 10px 0; margin: 0; border-radius: 6px; background-color: var(--nav-mobile-background-color);
     border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-    box-shadow: none; overflow-y: auto; transition: 0.3s; z-index: 9998;
+    box-shadow: none; overflow-y: auto; transition: .3s; z-index: 9998;
   }
   .navmenu a, .navmenu a:focus {
-    color: var(--nav-dropdown-color); padding: 10px 20px; font-family: var(--nav-font);
+    color: var(--nav-dropdown-color); padding: 10px 20px; font-family: "Poppins", sans-serif;
     font-size: 17px; font-weight: 500; display: flex; align-items: center; justify-content: space-between;
-    white-space: nowrap; transition: 0.3s;
+    white-space: nowrap; transition: .3s;
   }
   .navmenu a i, .navmenu a:focus i {
     font-size: 12px; line-height: 0; margin-left: 5px; width: 30px; height: 30px;
-    display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: 0.3s;
+    display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: .3s;
     background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
   }
   .navmenu a i:hover, .navmenu a:focus i:hover { background-color: var(--accent-color); color: var(--contrast-color); }
   .navmenu a:hover, .navmenu .active, .navmenu .active:focus { color: var(--nav-dropdown-hover-color); }
   .navmenu .active i, .navmenu .active:focus i { background-color: var(--accent-color); color: var(--contrast-color); transform: rotate(180deg); }
+
   .mobile-nav-active { overflow: hidden; }
   .mobile-nav-active .mobile-nav-toggle { color: #fff; position: absolute; font-size: 32px; top: 15px; right: 15px; margin-right: 0; z-index: 9999; }
-  .mobile-nav-active .navmenu { position: fixed; overflow: hidden; inset: 0; background: rgba(33, 37, 41, 0.8); transition: 0.3s; }
+  .mobile-nav-active .navmenu { position: fixed; overflow: hidden; inset: 0; background: rgba(33, 37, 41, 0.8); transition: .3s; }
   .mobile-nav-active .navmenu>ul { display: block; }
 }
 
 /* ============================================================================
-   4) FOOTER (with social links moved from inline styles)
+   4) FOOTER
 ============================================================================ */
 .footer {
   color: var(--default-color);
@@ -222,8 +226,8 @@ h1, h2, h3, h4, h5, h6 {
   display: flex; align-items: center; justify-content: center;
   width: 44px; height: 44px; border-radius: 50%;
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 30%);
-  font-size: 22px; color: #c5c5c5; /* previous inline value */
-  transition: 0.3s;
+  font-size: 22px; color: #c5c5c5;
+  transition: .3s;
 }
 .footer .social-links a:hover {
   color: var(--default-color);
@@ -237,7 +241,7 @@ h1, h2, h3, h4, h5, h6 {
 ============================================================================ */
 #preloader {
   position: fixed; inset: 0; z-index: 999999; overflow: hidden;
-  background: var(--background-color); transition: all 0.6s ease-out;
+  background: var(--background-color); transition: all .6s ease-out;
 }
 #preloader:before {
   content: ""; position: fixed; top: calc(50% - 30px); left: calc(50% - 30px);
@@ -248,7 +252,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .scroll-top, #scroll-top {
   position: fixed; visibility: hidden; opacity: 0; right: 15px; bottom: -15px; z-index: 99999;
-  background-color: var(--accent-color); width: 44px; height: 44px; border-radius: 50px; transition: all 0.4s;
+  background-color: var(--accent-color); width: 44px; height: 44px; border-radius: 50px; transition: all .4s;
   display: flex; align-items: center; justify-content: center;
 }
 .scroll-top i, #scroll-top i { font-size: 24px; color: var(--contrast-color); line-height: 0; }
@@ -256,157 +260,154 @@ h1, h2, h3, h4, h5, h6 {
 .scroll-top.active, #scroll-top.active { visibility: visible; opacity: 1; bottom: 15px; }
 
 /* ============================================================================
-   6) RESPONSIVE TWEAKS
-============================================================================ */
-@media screen and (max-width: 768px) { [data-aos-delay] { transition-delay: 0 !important; } }
-
-/* ============================================================================
-   8) SECTIONS (generic)
+   6) SECTIONS + TITLES
 ============================================================================ */
 section, .section {
-  color: var(--default-color); background-color: var(--background-color);
-  padding: 30px 0; scroll-margin-top: 80px; overflow: clip;
+  color: var(--default-color);
+  background-color: var(--background-color);
+  padding-block: var(--section-pad);
+  scroll-margin-top: 80px;
+  overflow: clip;
 }
 @media (max-width: 1199px) { section, .section { scroll-margin-top: 76px; } }
 
-/* Section Titles */
 .section-title { text-align: center; padding-bottom: 60px; position: relative; }
-.section-title h2 { font-size: 32px; font-weight: 700; margin-bottom: 20px; padding-bottom: 20px; position: relative; }
-.section-title h2:after { content: ""; position: absolute; display: block; width: 50px; height: 3px; background: var(--accent-color); left: 0; right: 0; bottom: 0; margin: auto; }
+.section-title h2 {
+  font-size: 32px; font-weight: 700; margin-bottom: 20px; padding-bottom: 20px; position: relative;
+}
+.section-title h2:after {
+  content: ""; position: absolute; display: block; width: 50px; height: 3px;
+  background: var(--accent-color); left: 0; right: 0; bottom: 0; margin: auto;
+}
 .section-title p { margin-bottom: 0; }
 
-/* ============================================================================
-   9) HERO
-============================================================================ */
-.hero p { font-size: 18px; }
+/* About page tighter rhythm */
+.about-page .section .section-title { margin-bottom: .5rem !important; }
+.about-page .section .section-title h2 { margin-bottom: .25rem; }
+.about-page #about-me .section-title + p { margin-top: 0; }
 
+/* ============================================================================
+   7) HERO
+============================================================================ */
 .hero {
-  width: 100%; min-height: calc(100vh - 92px); position: relative; padding: 60px 0;
+  width: 100%;
+  min-height: calc(100vh - 92px);
+  position: relative;
+  padding: 60px 0;
   display: flex; align-items: center; justify-content: center;
 }
-.hero img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+.hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
 .hero:before { content: ""; background: color-mix(in srgb, var(--background-color), transparent 65%); position: absolute; inset: 0; z-index: 2; }
 .hero .container { position: relative; z-index: 3; }
 .hero h1 { margin: 0; font-size: 24px; font-weight: 700; }
 .hero h2 { margin: 0; font-size: 64px; font-weight: 700; }
-.hero p {
-  margin: 5px 0 0 0;
-  font-size: 25px;
-  font-weight: 400;
-  font-family: var(--heading-font); /* <-- pake Space Grotesk */
-}
+.hero p { margin: 5px 0 0 0; font-size: 25px; font-weight: 400; font-family: "Space Grotesk", sans-serif; }
+@media (max-width: 768px) { .hero h2 { font-size: 32px; } }
 
-
-@media (max-width: 768px) { .hero h2 { font-size: 32px; }  }
-
-/* Social links in hero (moved from inline) */
-.hero .social-links {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.hero .social-links a {
-  font-size: 25px;
-  color: #b2b2b2;
-  transition: color 0.3s;
-}
+/* Social links in hero */
+.hero .social-links { display: flex; align-items: center; gap: 12px; }
+.hero .social-links a { font-size: 25px; color: #b2b2b2; transition: color .3s; }
 .hero .social-links a:hover { color: #ffffff; }
 
 /* ============================================================================
-   10) PORTFOLIO (work grid)
+   8) PORTFOLIO (filters + cards)
+   Safelist: .portfolio-item, .filter-btn, .geoscience, .gis, .data, .consulting, #portfolio-grid
 ============================================================================ */
-.portfolio .portfolio-filters { padding: 0; margin: 0 auto 20px auto; list-style: none; text-align: center; }
-.portfolio .portfolio-filters li { cursor: pointer; display: inline-block; padding: 0; font-size: 16px; font-weight: 600; margin: 0 10px; line-height: 1; text-transform: uppercase; margin-bottom: 5px; transition: all 0.3s ease-in-out; }
-.portfolio .portfolio-filters li:hover, .portfolio .portfolio-filters li.filter-active { color: var(--accent-color); }
-.portfolio .portfolio-filters li:first-child { margin-left: 0; }
-.portfolio .portfolio-filters li:last-child { margin-right: 0; }
-@media (max-width: 575px) { .portfolio .portfolio-filters li { font-size: 14px; margin: 0 5px; } }
-
+.portfolio .portfolio-filters {
+  padding: 0; margin: 0 auto 20px auto; list-style: none; text-align: center;
+}
+.portfolio .portfolio-filters li,
+.portfolio .portfolio-filters .filter-btn {
+  cursor: pointer; display: inline-block; padding: 0; font-size: 16px; font-weight: 600;
+  margin: 0 10px; line-height: 1; text-transform: uppercase; margin-bottom: 5px; transition: all .3s ease-in-out;
+}
+.portfolio .portfolio-filters li:hover,
+.portfolio .portfolio-filters .filter-btn:hover,
+.portfolio .portfolio-filters .filter-active { color: var(--accent-color); }
+@media (max-width: 575px) {
+  .portfolio .portfolio-filters li,
+  .portfolio .portfolio-filters .filter-btn { font-size: 14px; margin: 0 5px; }
+}
 .portfolio .portfolio-item { position: relative; }
-.portfolio .portfolio-item .portfolio-info {
-  opacity: 0; position: absolute; left: 30px; right: 30px; bottom: 0; z-index: 3; transition: all ease-in-out 0.3s;
-  background: color-mix(in srgb, var(--background-color), transparent 10%); padding: 15px;
-}
-.portfolio .portfolio-item .portfolio-info h4 { font-size: 18px; font-weight: 600; padding-right: 50px; }
-.portfolio .portfolio-item .portfolio-info p { color: color-mix(in srgb, var(--default-color), transparent 30%); font-size: 14px; margin-bottom: 0; padding-right: 50px; }
-.portfolio .portfolio-item .portfolio-info .preview-link, .portfolio .portfolio-item .portfolio-info .details-link {
-  position: absolute; right: 50px; font-size: 24px; top: calc(50% - 14px); color: color-mix(in srgb, var(--default-color), transparent 30%); transition: 0.3s; line-height: 0;
-}
-.portfolio .portfolio-item .portfolio-info .preview-link:hover, .portfolio .portfolio-item .portfolio-info .details-link:hover { color: var(--accent-color); }
-.portfolio .portfolio-item .portfolio-info .details-link { right: 14px; font-size: 28px; }
-.portfolio .portfolio-item:hover .portfolio-info { opacity: 1; bottom: 20px;
-}
 
 /* ============================================================================
-   11) RESEARCH LAB (index custom block)
+   9) RESEARCH LAB
 ============================================================================ */
-#research .lab-figure img { border-radius: 1rem; }
+#research .lab-figure img { border-radius: var(--radius-lg); }
 #research .lab-copy h2 { font-size: 32px; font-weight: 700; }
 #research .lab-copy p { font-size: 16px; margin-bottom: 16px; }
 
 /* ============================================================================
-   12) ABOUT PREVIEW (index custom block)
+   10) ABOUT PREVIEW (index)
 ============================================================================ */
-.about-preview img { max-width: 160px; }
+.about-preview img { max-width: 160px; border-radius: 999px; }
 .about-preview h2 { font-size: 28px; font-weight: 700; }
 .about-preview p { font-size: 15px; }
 
 /* ============================================================================
-   21) CUSTOM: INSIGHTS CARD HOVER (kept as-is for other pages/links)
+   11) CARDS + MICRO-INTERACTION
 ============================================================================ */
-#insights a.d-block { transition: all 0.2s; }
-#insights a.d-block:hover { border-color: #00d084; box-shadow: 0 0 0 2px rgba(0, 208, 132, .15); }
+.card, .border.rounded-3 { transition: transform .18s ease, box-shadow .18s ease; }
+.card:hover, .border.rounded-3:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+img.card-img-top { display: block; width: 100%; height: auto; border-top-left-radius: .375rem; border-top-right-radius: .375rem; }
+
+/* Grid gap helper if needed */
+.cards-grid { gap: var(--gap-card); }
 
 /* ============================================================================
+   12) UTILITIES
+============================================================================ */
+hr.my-0 { border: 0; height: 1px; background: linear-gradient(90deg, rgba(0,0,0,.08), rgba(0,0,0,.02)); }
+
+/* Hover hints kept for library */
+#library a.d-block { transition: all .2s; }
+#library a.d-block:hover { border-color: #00d084; box-shadow: 0 0 0 2px rgba(0, 208, 132, .15); }
+
+/* AOS delay collapse on small screens */
+@media (max-width: 768px) { [data-aos-delay] { transition-delay: 0 !important; } }
 
 /* ============================================================================
-   99) OVERRIDES & ONE-OFFS
-   - Non-structural polish; aman buat dihidup-matin tanpa ngubah core layout
+   13) SAFELIST (do not remove; used by libs or future states)
 ============================================================================ */
+/* .active, .is-active, .open, .show, .hidden, .visually-hidden, .sr-only,
+   .portfolio-item, #portfolio-grid, .filter-btn,
+   .geoscience, .gis, .data, .consulting,
+   .glightbox, .isotope, .isotope-item,
+   .bi
+*/
 
-/* Accent underline untuk judul section di halaman About saja */
-.about-page #about-me h2,
-.about-page #education h2,
-.about-page #work-with-me h2,
-.about-page #contact h2 {
-  position: relative;
-  display: inline-block;
-  padding-bottom: 6px;
-}
-.about-page #about-me h2::after,
-.about-page #education h2::after,
-.about-page #work-with-me h2::after,
-.about-page #contact h2::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 56px;
-  height: 3px;
-  border-radius: 2px;
-  background: linear-gradient(90deg, var(--accent-color), transparent 75%);
+/* Footer override khusus (taruh di paling bawah main.css) */
+footer.footer {
+  --background-color: #111111; /* background baru footer */
+  --default-color: #f1f1f1;    /* teks */
+  --heading-color: #ffffff;    /* judul/heading */
+  --accent-color: #ffffff;     /* link hover/underline */
 }
 
-/* Micro-interaction pada box/card (angkat dikit + shadow halus saat hover) */
-.card,
-.border.rounded-3 {
-  transition: transform .18s ease, box-shadow .18s ease;
-}
-.card:hover,
-.border.rounded-3:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(0,0,0,.07);
-}
-
-/* Styling divider <hr class="my-0"> biar lebih subtle */
-hr.my-0 {
-  border: 0;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(0,0,0,.08), rgba(0,0,0,.02));
+/* About: align underline accent to the left of the heading */
+@media (min-width: 768px) {
+  .about-page .section .section-title { 
+    text-align: left;                 /* paksa container title rata kiri */
+  }
+  .about-page .section .section-title h2::after {
+    left: 0;                          /* anchor ke kiri */
+    right: auto; 
+    margin: 0;                        /* jangan center */
+  }
 }
 
-/* Rapetin sedikit ritme vertikal khusus halaman About (tanpa ganggu page lain) */
-.about-page .section {
-  padding-top: 32px;
-  padding-bottom: 32px;
+/* About page: tighter spacing under titles */
+.about-page .section .section-title {
+  padding-bottom: 20px;   /* lebih pendek dari default 60px */
+  margin-bottom: .5rem;   /* ganti dari mb-3 */
+  text-align: left;
+}
+.about-page .section .section-title h2 {
+  margin-bottom: .25rem;  /* judul lebih rapat dengan narasi */
+  padding-bottom: 0;      /* hilangkan padding bawah ekstra */
+}
+
+.about-page #about-me p:first-of-type,
+.about-page #education p:first-of-type {
+  margin-top: 0; 
 }

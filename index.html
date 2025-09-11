@@ -1,6 +1,6 @@
+<!-- Cleanup: removed unused vendor (Swiper), unified header/footer, fixed Threads URL, added Isotope date sorting hook, synced section backgrounds, purged stray filter-* classes, kept visual parity -->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -12,48 +12,44 @@
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/favicon.png" rel="apple-touch-icon">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <!-- Fonts (single consolidated import) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;500;600&family=Raleway:wght@400;600;700&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
 
-  <!-- Preload hero image (percepat LCP) -->
+  <!-- Preload hero image to improve LCP -->
   <link rel="preload" as="image" href="assets/img/hero-img-5.jpg" imagesrcset="assets/img/hero-img-5.jpg 1200w" imagesizes="100vw">
 
-  <!-- Vendor CSS Files -->
+  <!-- Vendor CSS (only used libs) -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-  <!-- Main CSS File --><!-- link css bawaan -->
-  <!-- Custom Style --><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
-
+  <!-- Main CSS -->
   <link href="assets/css/main.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
 </head>
 
 <body class="index-page">
   <!-- ============================ HEADER ============================ -->
-<header id="header" class="header d-flex align-items-center sticky-top">
+  <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">Septia Hadi</h1>
+      <a href="index.html" class="logo d-flex align-items-center" aria-label="Go to Home">
+        <h1 class="sitename mb-0">Septia Hadi</h1>
       </a>
 
-      <nav id="navmenu" class="navmenu">
+      <nav id="navmenu" class="navmenu" aria-label="Primary">
         <ul>
-          <li><a href="#hero" class="active">Home<br></a></li>
-          <li><a href="#portfolio" class="active">Work<br></a></li>
-          <li><a href="insights.html">Library</a></li>
-          <li><a href="#research">Research Lab</a></li>
+          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#portfolio">Work</a></li>
+          <li><a href="library.html">Library</a></li>
+          <li><a href="research.html">Research Lab</a></li>
           <li><a href="about.html">About</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        <button class="mobile-nav-toggle d-xl-none" aria-label="Toggle navigation" aria-expanded="false">
+          <i class="bi bi-list" aria-hidden="true"></i>
+        </button>
       </nav>
 
     </div>
@@ -61,398 +57,384 @@
 
   <main class="main">
 
-    <!-- Hero Section -->
     <!-- ============================= HERO ============================= -->
-<section id="hero" class="hero section dark-background">
-      <img src="assets/img/hero-img-5.jpg" alt="" data-aos="fade-in">
+    <section id="hero" class="hero section dark-background">
+      <img src="assets/img/hero-img-5.jpg" alt="Hero background" data-aos="fade-in" width="1200" height="675">
 
       <div class="container d-flex flex-column align-items-start justify-content-start text-start" data-aos="fade-up" data-aos-delay="80">
         <h1>Hi there... I'm</h1>
         <h2>Septia Hadi</h2>
-        <p> <span class="normal-font">A Geoscientist · GIS & Data Enthusiast · </span></p>
-        <p> <span class="normal-font">Data Visualization & Creative Design · AI Explorer · </span></p>
-       
-        <p> <span class="typed" data-typed-items="Builder of Impact, Teach on the side, Sharing what I learn, Exploring with AI"></span></p>
+        <p><span class="normal-font">A Geoscientist · GIS &amp; Data Enthusiast · </span></p>
+        <p><span class="normal-font">Data Visualization &amp; Creative Design · AI Explorer · </span></p>
+        <p><span class="typed" data-typed-items="Teach on the side, Sharing what I learn, Exploring with AI"></span></p>
+
         <div class="social-links mt-3">
-          <a href="https://www.instagram.com/septiahadi_" target="_blank" rel="noreferrer noopener" class="me-3">
-          <i class="bi bi-instagram"></i>
+          <a href="https://www.behance.net/septiahadi" target="_blank" rel="noopener" class="me-3" aria-label="Behance">
+            <i class="bi bi-behance" aria-hidden="true"></i>
           </a>
-
-          <a href="https://github.com/septiahadi" target="_blank" rel="noreferrer noopener" class="me-3">
-          <i class="bi bi-github"></i>
+          <a href="https://github.com/septiahadi" target="_blank" rel="noopener" class="me-3" aria-label="GitHub">
+            <i class="bi bi-github" aria-hidden="true"></i>
           </a>
-
-          <a href="https://threads.com/@septiahadi_" target="_blank" rel="noreferrer noopener" class="me-3">
-          <i class="bi bi-threads"></i>
+          <a href="https://medium.com/@septiahadi" target="_blank" rel="noopener" class="me-3" aria-label="Medium">
+            <i class="bi bi-medium" aria-hidden="true"></i>
           </a>
-          <a href="https://medium.com/@septiahadi" target="_blank" rel="noreferrer noopener" class="me-3">
-          <i class="bi bi-medium"></i>
+          <a href="https://www.researchgate.net/profile/Septia-Hadi-Wardana" target="_blank" rel="noopener" class="me-3" aria-label="ResearchGate">
+            <i class="bi bi-mortarboard" aria-hidden="true"></i>
           </a>
-          <a href="https://www.behance.net/septiahadi" target="_blank" rel="noreferrer noopener" class="me-3">
-          <i class="bi bi-behance"></i>
+          <a href="https://www.instagram.com/septiahadi_" target="_blank" rel="noopener" class="me-3" aria-label="Instagram">
+            <i class="bi bi-instagram" aria-hidden="true"></i>
           </a>
-      </div>
-    </section><!-- /Hero Section -->
-
-<!-- Work -->
-<!-- ========================== WORK / PORTFOLIO ========================== -->
-<section id="portfolio" class="portfolio section" style="padding-top:32px; padding-bottom:32px;">
-  <div class="container">
-    <div class="card shadow-sm border rounded-3 p-4 p-md-5 my-2">
-
-      <!-- Title (tetap pakai section-title & AOS) -->
-      <div class="section-title" data-aos="fade-up">
-        <h2>Work</h2>
-        <p>Selected projects and case studies where I apply geoscience, data, and design to solve real problems.</p>
-      </div>
-
-      <!-- Grid -->
-      <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
-        <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-          <li data-filter="*" class="filter-active">All</li>
-          <li data-filter=".filter-geocience">Geoscience</li>
-          <li data-filter=".filter-mining">Mining</li>
-          <li data-filter=".filter-gisdata">GIS & Data Science</li>
-          <li data-filter=".filter-consulting">Consulting</li>
-        </ul>
-
-        <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-
-  <!-- GEOSCIENCE 1 -->
-  <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-geocience">
-    <div class="card h-100 shadow-sm border rounded-3 overflow-hidden">
-      <a href="assets/img/portfolio/geological mapping anticline zone.jpg" class="glightbox" data-gallery="portfolio-gallery-app" aria-label="Preview Thesis Structure">
-        <img src="assets/img/portfolio/geological mapping anticline zone.jpg" class="card-img-top" alt="Cross-section restoration — Handil Bakti" loading="lazy">
-      </a>
-      <div class="card-body d-flex flex-column">
-        <h4 class="card-title mb-2">Geological and Structure Cross Section Restoration of The Anticline Zone</h4>
-        <div class="project-links d-flex flex-wrap gap-2 mb-2">
-          <a class="btn btn-sm btn-dark" href="https://www.behance.net/gallery/226907647/Geological-Mapping-of-Anticline-Zone-in-Palaran-Borneo" target="_blank" rel="noopener">Behance</a>
-          <a class="btn btn-sm btn-dark" href="https://www.researchgate.net/profile/Septia-Hadi-Wardana" target="_blank" rel="noopener">ResearchGate</a>
+          <!--activity-gap
+          <a href="https://threads.net/@septiahadi_" target="_blank" rel="noopener" class="me-3" aria-label="Threads">
+            <i class="bi bi-threads" aria-hidden="true"></i>
+          </a -->         
         </div>
-        <p class="card-text mb-3">
-          Portfolio featuring a geologic map, stratigraphy, and structural study of Palaran, alongside a restored Handil Bakti anticline cross-section with field-validated interpretation.
-        </p>
-        <ul class="tools list-unstyled d-flex flex-wrap gap-2 mt-auto mb-0">
-          <li><span class="badge rounded-pill text-bg-light">ArcGIS</span></li>
-          <li><span class="badge rounded-pill text-bg-light">GeoRose</span></li>
-          <li><span class="badge rounded-pill text-bg-light">Higgins & Kink Method</span></li>
-          <li><span class="badge rounded-pill text-bg-light">Lineament & 3D Analysis</span></li>
-          <li><span class="badge rounded-pill text-bg-light">Geological Mapping</span></li>
-        </ul>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <!-- GEOSCIENCE 2 -->
-  <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-geocience">
-    <div class="card h-100 shadow-sm border rounded-3 overflow-hidden">
-      <a href="assets/img/portfolio/C resources.jpg" class="glightbox" data-gallery="portfolio-gallery-app" aria-label="Preview Mineral C Utilization">
-        <img src="assets/img/portfolio/C resources.jpg" class="card-img-top" alt="C Mineral Resources — Bukit Raya" loading="lazy">
-      </a>
-      <div class="card-body d-flex flex-column">
-        <h4 class="card-title mb-2">Geology and Utilization of Mineral Resources in Bukit Raya, East Borneo</h4>
-        <div class="project-links d-flex flex-wrap gap-2 mb-2">
-          <a class="btn btn-sm btn-dark" href="https://e-journals.unmul.ac.id/index.php/TG/article/view/6450" target="_blank" rel="noopener">e-Journal Unmul</a>
-        </div>
-        <p class="card-text mb-3">
-          Geology and utilization of C-type mineral deposits in Bukit Raya and Kutai Kartanegara, covering methods, feasibility, and local resource context.
-        </p>
-        <ul class="tools list-unstyled d-flex flex-wrap gap-2 mt-auto mb-0">
-          <li><span class="badge rounded-pill text-bg-light">ArcGIS/QGIS</span></li>
-          <li><span class="badge rounded-pill text-bg-light">Granulometry</span></li>
-          <li><span class="badge rounded-pill text-bg-light">XRD</span></li>
-          <li><span class="badge rounded-pill text-bg-light">Analysis</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
+    <!-- ========================== WORK / PORTFOLIO ========================== -->
+    <section id="portfolio" class="portfolio section" style="padding-top:32px; padding-bottom:32px;">
+      <div class="container">
+        <div class="card shadow-sm border rounded-3 p-4 p-md-5 my-2">
 
-  <!-- GEOSCIENCE 4 (kelas asli: filter-geosience, biarkan agar filter tetap konsisten) 
-  <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-geosience">
-    <div class="card h-100 shadow-sm border rounded-3 overflow-hidden">
-      <a href="assets/img/portfolio/geologi-mining.png" class="glightbox" data-gallery="portfolio-gallery-insight" aria-label="Preview Geology & Mining Intro">
-        <img src="assets/img/portfolio/geologi-mining.png" class="card-img-top" alt="Geology & Mining — Intro" loading="lazy">
-      </a>
-      <div class="card-body d-flex flex-column">
-        <h4 class="card-title mb-2">Geology & Mining: Introduction</h4>
-        <div class="project-links d-flex flex-wrap gap-2 mb-2">
-          <a class="btn btn-sm btn-dark" href="https://septiahadi.medium.com/geology-mining-introduction-a951908e8b56" target="_blank" rel="noopener">Medium</a>
-        </div>
-        <p class="card-text mb-3">
-          Overview of the geoscience–mining pipeline from exploration to production, with sustainability and safety considerations.
-        </p>
-        <ul class="tools list-unstyled d-flex flex-wrap gap-2 mt-auto mb-0">
-          <li><span class="badge rounded-pill text-bg-light">Notion/Docs</span></li>
-          <li><span class="badge rounded-pill text-bg-light">Illustrations</span></li>
-        </ul>
-      </div>
-    </div>
-  </div -->
+          <div class="section-title" data-aos="fade-up">
+            <h2>Work</h2>
+            <p>Selected projects and case studies where I apply geoscience, data, and design to solve real problems.</p>
+          </div>
 
-  <!-- MINING 1 -->
-  <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-mining">
-    <div class="card h-100 shadow-sm border rounded-3 overflow-hidden">
-      <a href="assets/img/portfolio/improvement.png" class="glightbox" data-gallery="portfolio-gallery-app" aria-label="Preview Mining Improvement">
-        <img src="assets/img/portfolio/improvement.png" class="card-img-top" alt="Mining Improvement — Shift Change" loading="lazy">
-      </a>
-      <div class="card-body d-flex flex-column">
-        <h4 class="card-title mb-2">Mining Improvement: Shift Change Optimization</h4>
-        <div class="project-links d-flex flex-wrap gap-2 mb-2">
-          <a class="btn btn-sm btn-dark" href="https://drive.google.com/file/d/1AMleddajtrNzSu20CA59-ZBj1AzIqWbc/view?usp=sharing" target="_blank" rel="noopener">More</a>
-        </div>
-        <p class="card-text mb-3">
-          Reduced Loss Time from 8.8% → 0% by optimizing P5M (morning talk) duration and coordination windows on Panel 2 (F4.3 & F4.4).
-        </p>
-        <ul class="tools list-unstyled d-flex flex-wrap gap-2 mt-auto mb-0">
-          <li><span class="badge rounded-pill text-bg-light">Excel</span></li>
-          <li><span class="badge rounded-pill text-bg-light">Power BI</span></li>
-          <li><span class="badge rounded-pill text-bg-light">Ops SOP</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
+          <!-- Filters -->
+          <ul class="portfolio-filters isotope-filters" role="tablist" aria-label="Portfolio filters" data-aos="fade-up" data-aos-delay="100">
+            <li class="filter-btn filter-active" data-filter="*">All</li>
+            <li class="filter-btn" data-filter=".geoscience">Geoscience</li>
+            <li class="filter-btn" data-filter=".gis">GIS</li>
+            <li class="filter-btn" data-filter=".data">Data</li>
+            <li class="filter-btn" data-filter=".consulting">Consulting</li>
+          </ul>
 
-  <!-- MINING 2 -->
-  <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-mining">
-    <div class="card h-100 shadow-sm border rounded-3 overflow-hidden">
-      <a href="assets/img/portfolio/short-term-forecasting.png" class="glightbox" data-gallery="portfolio-gallery-app" aria-label="Preview Short-term Forecasting">
-        <img src="assets/img/portfolio/short-term-forecasting.png" class="card-img-top" alt="Short-term Mine Planning — Forecasting" loading="lazy">
-      </a>
-      <div class="card-body d-flex flex-column">
-        <h4 class="card-title mb-2">Short-term Mine Planning: Forecasting</h4>
-        <div class="project-links d-flex flex-wrap gap-2 mb-2">
-          <a class="btn btn-sm btn-dark" href="https://drive.google.com/file/d/1YYc7R0ngNl-bxmYIabHUtcRuqEPh7b5A/view?usp=sharing" target="_blank" rel="noopener">More</a>
-        </div>
-        <p class="card-text mb-3">
-          Daily–monthly production forecasting with ore quality constraints, safety windows, and haul cycle variability.
-        </p>
-        <ul class="tools list-unstyled d-flex flex-wrap gap-2 mt-auto mb-0">
-          <li><span class="badge rounded-pill text-bg-light">Python</span></li>
-          <li><span class="badge rounded-pill text-bg-light">pandas</span></li>
-          <li><span class="badge rounded-pill text-bg-light">Matplotlib</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
+          <!-- Grid -->
+          <div class="row gy-4 isotope-container" id="portfolio-grid" data-aos="fade-up" data-aos-delay="200">
 
-  <!-- MINING 3 -->
-  <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-mining">
-    <div class="card h-100 shadow-sm border rounded-3 overflow-hidden">
-      <a href="assets/img/portfolio/besr.png" class="glightbox" data-gallery="portfolio-gallery-insight" aria-label="Preview BESR">
-        <img src="assets/img/portfolio/besr.png" class="card-img-top" alt="BESR & Pit Limit" loading="lazy">
-      </a>
-      <div class="card-body d-flex flex-column">
-        <h4 class="card-title mb-2">BESR & Stripping Ratio Pit Limit</h4>
-        <div class="project-links d-flex flex-wrap gap-2 mb-2">
-          <a class="btn btn-sm btn-dark" href="https://septiahadi.medium.com/besr-break-even-stripping-ratio-stripping-ratio-pit-limit-mineportofolio-337b28f79fb4" target="_blank" rel="noopener">Medium</a>
-        </div>
-        <p class="card-text mb-3">
-          Economic cut-off analysis for open-pit operations—balancing overburden movement vs. recoverable ore to set pit limits.
-        </p>
-        <ul class="tools list-unstyled d-flex flex-wrap gap-2 mt-auto mb-0">
-          <li><span class="badge rounded-pill text-bg-light">Excel</span></li>
-          <li><span class="badge rounded-pill text-bg-light">Scheduling</span></li>
-          <li><span class="badge rounded-pill text-bg-light">Mine Planning</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
+            <!-- GEOSCIENCE 1 -->
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item geoscience" data-date="2025-08-31" aria-label="Geological and Structure Cross Section Restoration of The Anticline Zone">
+              <div class="card h-100 shadow-sm border rounded-3 overflow-hidden">
+                <a href="assets/img/portfolio/thesis-mapping.jpg" class="glightbox" data-gallery="portfolio-gallery-app" aria-label="Preview Thesis Structure">
+                  <img src="assets/img/portfolio/geological mapping anticline zone.jpg" class="card-img-top" alt="Cross-section restoration — Handil Bakti" loading="lazy">
+                </a>
+                <div class="card-body d-flex flex-column">
+                  <h4 class="card-title mb-2">Geological and Structure Cross Section Restoration of The Anticline Zone</h4>
+                  <div class="project-links d-flex flex-wrap gap-2 mb-2">
+                    <a class="btn btn-sm btn-dark" href="https://www.behance.net/gallery/226907647/Geological-Mapping-of-Anticline-Zone-in-Palaran-Borneo" target="_blank" rel="noopener">Behance</a>
+                    <a class="btn btn-sm btn-dark" href="https://www.researchgate.net/profile/Septia-Hadi-Wardana" target="_blank" rel="noopener">ResearchGate</a>
+                  </div>
+                  <p class="card-text mb-3">Portfolio featuring a geologic map, stratigraphy, and structural study of Palaran, alongside a restored Handil Bakti anticline cross-section with field-validated interpretation.</p>
+                  <ul class="tools list-unstyled d-flex flex-wrap gap-2 mt-auto mb-0">
+                    <li><span class="badge rounded-pill text-bg-light">ArcGIS</span></li>
+                    <li><span class="badge rounded-pill text-bg-light">GeoRose</span></li>
+                    <li><span class="badge rounded-pill text-bg-light">Higgins &amp; Kink Method</span></li>
+                    <li><span class="badge rounded-pill text-bg-light">Lineament &amp; 3D Analysis</span></li>
+                    <li><span class="badge rounded-pill text-bg-light">Geological Mapping</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
 
-  <!-- MINING 4 -->
-  <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-mining">
-    <div class="card h-100 shadow-sm border rounded-3 overflow-hidden">
-      <a href="assets/img/portfolio/long-term-process.png" class="glightbox" data-gallery="portfolio-gallery-insight" aria-label="Preview Long-term Planning">
-        <img src="assets/img/portfolio/long-term-process.png" class="card-img-top" alt="Long-term planning flow" loading="lazy">
-      </a>
-      <div class="card-body d-flex flex-column">
-        <h4 class="card-title mb-2">Long-term Mine Planning Flow</h4>
-        <div class="project-links d-flex flex-wrap gap-2 mb-2">
-          <a class="btn btn-sm btn-dark" href="https://septiahadi.medium.com/long-term-mine-planning-flow-process-9f9b1337d91e" target="_blank" rel="noopener">Medium</a>
-        </div>
-        <p class="card-text mb-3">
-          Resource modeling, production scheduling, infra planning, and risk controls with environment & geotech guardrails.
-        </p>
-        <ul class="tools list-unstyled d-flex flex-wrap gap-2 mt-auto mb-0">
-          <li><span class="badge rounded-pill text-bg-light">MineSched/Whittle*</span></li>
-          <li><span class="badge rounded-pill text-bg-light">AutoCAD</span></li>
-          <li><span class="badge rounded-pill text-bg-light">Excel</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
+            <!-- GEOSCIENCE 2 -->
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item geoscience" data-date="2025-08-24" aria-label="Geology and Utilization of Mineral Resources in Bukit Raya, East Borneo">
+              <div class="card h-100 shadow-sm border rounded-3 overflow-hidden">
+                <a href="assets/img/portfolio/C resources.jpg" class="glightbox" data-gallery="portfolio-gallery-app" aria-label="Preview Mineral C Utilization">
+                  <img src="assets/img/portfolio/C resources.jpg" class="card-img-top" alt="C Mineral Resources — Bukit Raya" loading="lazy">
+                </a>
+                <div class="card-body d-flex flex-column">
+                  <h4 class="card-title mb-2">Geology and Utilization of Mineral Resources in Bukit Raya, East Borneo</h4>
+                  <div class="project-links d-flex flex-wrap gap-2 mb-2">
+                    <a class="btn btn-sm btn-dark" href="https://e-journals.unmul.ac.id/index.php/TG/article/view/6450" target="_blank" rel="noopener">e-Journal Unmul</a>
+                  </div>
+                  <p class="card-text mb-3">Geology and utilization of C-type mineral deposits in Bukit Raya and Kutai Kartanegara, covering methods, feasibility, and local resource context.</p>
+                  <ul class="tools list-unstyled d-flex flex-wrap gap-2 mt-auto mb-0">
+                    <li><span class="badge rounded-pill text-bg-light">ArcGIS/QGIS</span></li>
+                    <li><span class="badge rounded-pill text-bg-light">Granulometry</span></li>
+                    <li><span class="badge rounded-pill text-bg-light">XRD</span></li>
+                    <li><span class="badge rounded-pill text-bg-light">Analysis</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
 
-  <!-- GIS & DATA 3 -->
-  <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-gisdata">
-    <div class="card h-100 shadow-sm border rounded-3 overflow-hidden">
-      <a href="assets/img/portfolio/Cemetary.jpg" class="glightbox" data-gallery="portfolio-gallery-insight" aria-label="Preview Drone Mapping">
-        <img src="assets/img/portfolio/Cemetary.jpg" class="card-img-top" alt="Drone mapping — Teluk Bintuni" loading="lazy">
-      </a>
-      <div class="card-body d-flex flex-column">
-        <h4 class="card-title mb-2">Cemetery Mapping & Plot Classification — GIS Technical Project</h4>
-        <div class="project-links d-flex flex-wrap gap-2 mb-2">
-          <a class="btn btn-sm btn-dark" href="https://www.behance.net/gallery/234263651/Cemetery-Mapping-Plot-Classification-GIS-Project" target="_blank" rel="noopener">Behance</a>
-        </div>
-        <p class="card-text mb-3">
-          Cemetery Mapping project showcasing digitization, classification, and spatial analysis skills in QGIS. Created as part of a GIS technical test.
-        </p>
-        <ul class="tools list-unstyled d-flex flex-wrap gap-2 mt-auto mb-0">
-          <li><span class="badge rounded-pill text-bg-light">ArcGIS/GIS</span></li>
-          <li><span class="badge rounded-pill text-bg-light">Adobe Illustrator</span></li>
-          <li><span class="badge rounded-pill text-bg-light">CSV/GeoTIFF</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
+            <!-- DATA 1 -->
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item data" data-date="2025-08-18" aria-label="Short-term Mine Planning: Forecasting">
+              <div class="card h-100 shadow-sm border rounded-3 overflow-hidden">
+                <a href="assets/img/portfolio/short-term-forecasting.png" class="glightbox" data-gallery="portfolio-gallery-app" aria-label="Preview Short-term Forecasting">
+                  <img src="assets/img/portfolio/short-term-forecasting.png" class="card-img-top" alt="Short-term Mine Planning — Forecasting" loading="lazy">
+                </a>
+                <div class="card-body d-flex flex-column">
+                  <h4 class="card-title mb-2">Short-term Mine Planning: Forecasting</h4>
+                  <div class="project-links d-flex flex-wrap gap-2 mb-2">
+                    <a class="btn btn-sm btn-dark" href="https://drive.google.com/file/d/1YYc7R0ngNl-bxmYIabHUtcRuqEPh7b5A/view?usp=sharing" target="_blank" rel="noopener">More</a>
+                  </div>
+                  <p class="card-text mb-3">Daily–monthly production forecasting with ore quality constraints, safety windows, and haul cycle variability.</p>
+                  <ul class="tools list-unstyled d-flex flex-wrap gap-2 mt-auto mb-0">
+                    <li><span class="badge rounded-pill text-bg-light">Python</span></li>
+                    <li><span class="badge rounded-pill text-bg-light">pandas</span></li>
+                    <li><span class="badge rounded-pill text-bg-light">Matplotlib</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
 
-  <!-- GIS & DATA 2 -->
-  <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-gisdata">
-    <div class="card h-100 shadow-sm border rounded-3 overflow-hidden">
-      <a href="assets/img/portfolio/erosivitas.jpg" class="glightbox" data-gallery="portfolio-gallery-app" aria-label="Preview Erosivity GIS">
-        <img src="assets/img/portfolio/erosivitas.jpg" class="card-img-top" alt="Erosivity & runoff — GIS" loading="lazy">
-      </a>
-      <div class="card-body d-flex flex-column">
-        <h4 class="card-title mb-2">GIS Analysis of Erosivity and Runoff Water Calculation in the Gunung Lingai Area</h4>
-        <div class="project-links d-flex flex-wrap gap-2 mb-2">
-          <a class="btn btn-sm btn-dark" href="https://drive.google.com/file/d/1UuHQykqvflIzIGz6r37oJo85gh1WY4OM/view?usp=sharing" target="_blank" rel="noopener">ResearchGate</a>
-        </div>
-        <p class="card-text mb-3">
-          Spatial analysis of erosivity and runoff for Gunung Lingai, Samarinda DEM/precip inputs and hydrologic indices.
-        </p>
-        <ul class="tools list-unstyled d-flex flex-wrap gap-2 mt-auto mb-0">
-          <li><span class="badge rounded-pill text-bg-light">ArcGIS/QGIS</span></li>
-          <li><span class="badge rounded-pill text-bg-light">DEM</span></li>
-          <li><span class="badge rounded-pill text-bg-light">USLE Method</span></li>
-          <li><span class="badge rounded-pill text-bg-light">Mapping</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
+            <!-- GEOSCIENCE 3 -->
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item geoscience" data-date="2025-08-12" aria-label="Mining Improvement: Shift Change Optimization">
+              <div class="card h-100 shadow-sm border rounded-3 overflow-hidden">
+                <a href="assets/img/portfolio/improvement.png" class="glightbox" data-gallery="portfolio-gallery-app" aria-label="Preview Mining Improvement">
+                  <img src="assets/img/portfolio/improvement.png" class="card-img-top" alt="Mining Improvement — Shift Change" loading="lazy">
+                </a>
+                <div class="card-body d-flex flex-column">
+                  <h4 class="card-title mb-2">Mining Improvement: Shift Change Optimization</h4>
+                  <div class="project-links d-flex flex-wrap gap-2 mb-2">
+                    <a class="btn btn-sm btn-dark" href="https://drive.google.com/file/d/1AMleddajtrNzSu20CA59-ZBj1AzIqWbc/view?usp=sharing" target="_blank" rel="noopener">More</a>
+                  </div>
+                  <p class="card-text mb-3">Reduced Loss Time from 8.8% → 0% by optimizing P5M duration and coordination windows on Panel 2 (F4.3 &amp; F4.4).</p>
+                  <ul class="tools list-unstyled d-flex flex-wrap gap-2 mt-auto mb-0">
+                    <li><span class="badge rounded-pill text-bg-light">Excel</span></li>
+                    <li><span class="badge rounded-pill text-bg-light">Power BI</span></li>
+                    <li><span class="badge rounded-pill text-bg-light">Ops SOP</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
 
-  <!-- GIS & DATA 3 -->
-  <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-gisdata">
-    <div class="card h-100 shadow-sm border rounded-3 overflow-hidden">
-      <a href="assets/img/portfolio/IMC-PETA KONTUR.jpg" class="glightbox" data-gallery="portfolio-gallery-insight" aria-label="Preview Drone Mapping">
-        <img src="assets/img/portfolio/IMC-PETA KONTUR.jpg" class="card-img-top" alt="Drone mapping — Teluk Bintuni" loading="lazy">
-      </a>
-      <div class="card-body d-flex flex-column">
-        <h4 class="card-title mb-2">Mapping Using Drone</h4>
-        <div class="project-links d-flex flex-wrap gap-2 mb-2">
-          <a class="btn btn-sm btn-dark" href="https://septiahadi.medium.com/pelatihan-pemetaan-drone-di-indonesia-mapping-center-imc-b3dcebba1f2a" target="_blank" rel="noopener">Medium</a>
-        </div>
-        <p class="card-text mb-3">
-          Training recap & deliverables: hostel mapping for Teluk Bintuni, West Papua—from flight planning to contour output.
-        </p>
-        <ul class="tools list-unstyled d-flex flex-wrap gap-2 mt-auto mb-0">
-          <li><span class="badge rounded-pill text-bg-light">Pix4D/Metashape*</span></li>
-          <li><span class="badge rounded-pill text-bg-light">QGIS</span></li>
-          <li><span class="badge rounded-pill text-bg-light">CSV/GeoTIFF</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div><!-- .isotope-container -->
-</section>
+            <!-- GEOSCIENCE 4 -->
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item geoscience" data-date="2025-08-05" aria-label="BESR &amp; Stripping Ratio Pit Limit">
+              <div class="card h-100 shadow-sm border rounded-3 overflow-hidden">
+                <a href="assets/img/portfolio/besr.png" class="glightbox" data-gallery="portfolio-gallery-insight" aria-label="Preview BESR">
+                  <img src="assets/img/portfolio/besr.png" class="card-img-top" alt="BESR &amp; Pit Limit" loading="lazy">
+                </a>
+                <div class="card-body d-flex flex-column">
+                  <h4 class="card-title mb-2">BESR &amp; Stripping Ratio Pit Limit</h4>
+                  <div class="project-links d-flex flex-wrap gap-2 mb-2">
+                    <a class="btn btn-sm btn-dark" href="https://septiahadi.medium.com/besr-break-even-stripping-ratio-stripping-ratio-pit-limit-mineportofolio-337b28f79fb4" target="_blank" rel="noopener">Medium</a>
+                  </div>
+                  <p class="card-text mb-3">Economic cut-off analysis for open-pit operations—balancing overburden movement vs. recoverable ore to set pit limits.</p>
+                  <ul class="tools list-unstyled d-flex flex-wrap gap-2 mt-auto mb-0">
+                    <li><span class="badge rounded-pill text-bg-light">Excel</span></li>
+                    <li><span class="badge rounded-pill text-bg-light">Scheduling</span></li>
+                    <li><span class="badge rounded-pill text-bg-light">Mine Planning</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
 
-<!-- =========================== RESEARCH LAB ============================ -->
-<section id="research" class="section" style="padding-top:32px; padding-bottom:32px;">
-  <div class="container">
-    <div class="card shadow-sm border rounded-3 p-4 p-md-5 my-2">
-      <div class="row align-items-center g-4">
-        <!-- Kiri: Gambar -->
-        <div class="col-12 col-lg-6">
-          <figure class="lab-figure mb-0">
-            <img src="assets/img/working-space-2.jpg" alt="Research Lab — visual cover" class="img-fluid w-100 rounded-4 shadow-sm" loading="lazy" />
-          </figure>
-        </div>
+            <!-- GEOSCIENCE 5 -->
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item geoscience" data-date="2025-07-28" aria-label="Long-term Mine Planning Flow">
+              <div class="card h-100 shadow-sm border rounded-3 overflow-hidden">
+                <a href="assets/img/portfolio/long-term-process.png" class="glightbox" data-gallery="portfolio-gallery-insight" aria-label="Preview Long-term Planning">
+                  <img src="assets/img/portfolio/long-term-process.png" class="card-img-top" alt="Long-term planning flow" loading="lazy">
+                </a>
+                <div class="card-body d-flex flex-column">
+                  <h4 class="card-title mb-2">Long-term Mine Planning Flow</h4>
+                  <div class="project-links d-flex flex-wrap gap-2 mb-2">
+                    <a class="btn btn-sm btn-dark" href="https://septiahadi.medium.com/long-term-mine-planning-flow-process-9f9b1337d91e" target="_blank" rel="noopener">Medium</a>
+                  </div>
+                  <p class="card-text mb-3">Resource modeling, production scheduling, infra planning, and risk controls with environment &amp; geotech guardrails.</p>
+                  <ul class="tools list-unstyled d-flex flex-wrap gap-2 mt-auto mb-0">
+                    <li><span class="badge rounded-pill text-bg-light">MineSched/Whittle*</span></li>
+                    <li><span class="badge rounded-pill text-bg-light">AutoCAD</span></li>
+                    <li><span class="badge rounded-pill text-bg-light">Excel</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
 
-        <!-- Kanan: Narasi -->
-        <div class="col-12 col-lg-6">
-          <div class="lab-copy">
-            <h2>Research Lab</h2>
-            <p>
-              Synthetic is my digital workspace.
-              A place where I explore geoscience x data x AI. Here I publish experiments, share dataset, and document workflows, aiming for reproducible and transparent research.
-            </p>
-            <div class="d-flex flex-wrap gap-2">
-              <a href="research.html" class="btn btn-dark btn-lg">Visit Synthetic Lab</a>
+            <!-- GIS 1 -->
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item gis" data-date="2025-09-10" aria-label="Cemetery Mapping &amp; Plot Classification — GIS Technical Project">
+              <div class="card h-100 shadow-sm border rounded-3 overflow-hidden">
+                <a href="assets/img/portfolio/Cemetary.jpg" class="glightbox" data-gallery="portfolio-gallery-insight" aria-label="Preview Drone Mapping">
+                  <img src="assets/img/portfolio/Cemetary.jpg" class="card-img-top" alt="Cemetery mapping project" loading="lazy">
+                </a>
+                <div class="card-body d-flex flex-column">
+                  <h4 class="card-title mb-2">Cemetery Mapping &amp; Plot Classification — GIS Technical Project</h4>
+                  <div class="project-links d-flex flex-wrap gap-2 mb-2">
+                    <a class="btn btn-sm btn-dark" href="https://www.behance.net/gallery/234263651/Cemetery-Mapping-Plot-Classification-GIS-Project" target="_blank" rel="noopener">Behance</a>
+                  </div>
+                  <p class="card-text mb-3">Cemetery Mapping project showcasing digitization, classification, and spatial analysis skills in QGIS. Created as part of a GIS technical test.</p>
+                  <ul class="tools list-unstyled d-flex flex-wrap gap-2 mt-auto mb-0">
+                    <li><span class="badge rounded-pill text-bg-light">ArcGIS/GIS</span></li>
+                    <li><span class="badge rounded-pill text-bg-light">Adobe Illustrator</span></li>
+                    <li><span class="badge rounded-pill text-bg-light">CSV/GeoTIFF</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- GIS 2 -->
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item gis" data-date="2025-07-14" aria-label="GIS Analysis of Erosivity and Runoff Water Calculation in the Gunung Lingai Area">
+              <div class="card h-100 shadow-sm border rounded-3 overflow-hidden">
+                <a href="assets/img/portfolio/erosivitas.jpg" class="glightbox" data-gallery="portfolio-gallery-app" aria-label="Preview Erosivity GIS">
+                  <img src="assets/img/portfolio/erosivitas.jpg" class="card-img-top" alt="Erosivity &amp; runoff — GIS" loading="lazy">
+                </a>
+                <div class="card-body d-flex flex-column">
+                  <h4 class="card-title mb-2">GIS Analysis of Erosivity and Runoff Water Calculation in the Gunung Lingai Area</h4>
+                  <div class="project-links d-flex flex-wrap gap-2 mb-2">
+                    <a class="btn btn-sm btn-dark" href="https://drive.google.com/file/d/1UuHQykqvflIzIGz6r37oJo85gh1WY4OM/view?usp=sharing" target="_blank" rel="noopener">ResearchGate</a>
+                  </div>
+                  <p class="card-text mb-3">Spatial analysis of erosivity and runoff for Gunung Lingai, Samarinda DEM/precip inputs and hydrologic indices.</p>
+                  <ul class="tools list-unstyled d-flex flex-wrap gap-2 mt-auto mb-0">
+                    <li><span class="badge rounded-pill text-bg-light">ArcGIS/QGIS</span></li>
+                    <li><span class="badge rounded-pill text-bg-light">DEM</span></li>
+                    <li><span class="badge rounded-pill text-bg-light">USLE Method</span></li>
+                    <li><span class="badge rounded-pill text-bg-light">Mapping</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- GIS 3 -->
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item gis" data-date="2025-07-07" aria-label="Mapping Using Drone">
+              <div class="card h-100 shadow-sm border rounded-3 overflow-hidden">
+                <a href="assets/img/portfolio/IMC-PETA KONTUR.jpg" class="glightbox" data-gallery="portfolio-gallery-insight" aria-label="Preview Drone Mapping">
+                  <img src="assets/img/portfolio/IMC-PETA KONTUR.jpg" class="card-img-top" alt="Drone mapping — Teluk Bintuni" loading="lazy">
+                </a>
+                <div class="card-body d-flex flex-column">
+                  <h4 class="card-title mb-2">Mapping Using Drone</h4>
+                  <div class="project-links d-flex flex-wrap gap-2 mb-2">
+                    <a class="btn btn-sm btn-dark" href="https://septiahadi.medium.com/pelatihan-pemetaan-drone-di-indonesia-mapping-center-imc-b3dcebba1f2a" target="_blank" rel="noopener">Medium</a>
+                  </div>
+                  <p class="card-text mb-3">Training recap &amp; deliverables: hostel mapping for Teluk Bintuni, West Papua—from flight planning to contour output.</p>
+                  <ul class="tools list-unstyled d-flex flex-wrap gap-2 mt-auto mb-0">
+                    <li><span class="badge rounded-pill text-bg-light">Pix4D/Metashape*</span></li>
+                    <li><span class="badge rounded-pill text-bg-light">QGIS</span></li>
+                    <li><span class="badge rounded-pill text-bg-light">CSV/GeoTIFF</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /#portfolio-grid -->
+        </div><!-- /.card -->
+      </div><!-- /.container -->
+    </section>
+
+    <!-- ============================ ABOUT PREVIEW =========================== -->
+    <section id="about-preview" class="about-preview section" style="padding-top:32px; padding-bottom:32px;">
+      <div class="container">
+        <div class="card shadow-sm border rounded-3 p-4 p-md-5 my-2">
+          <div class="row align-items-center g-4">
+            <div class="col-md-4 text-center">
+              <img src="assets/img/Profile-hadi.png" alt="Portrait of Septia Hadi Wardana" class="img-fluid rounded-circle shadow-sm" style="max-width: 160px;" loading="lazy">
+            </div>
+            <div class="col-md-8">
+              <h2>About</h2>
+              <p class="text-muted mb-3">
+                Hi there! I work at the intersection of geoscience, data, visualization, and AI to create projects that make science easier to see and understand. Let’s explore my portfolio!
+              </p>
+              <a href="about.html" class="btn btn-dark btn-sm" aria-label="More about Septia Hadi">More →</a>
             </div>
           </div>
-        </div>
+        </div><!-- /.card -->
       </div>
-    </div><!-- .card -->
-  </div>
-</section>
+    </section>
 
-<!-- About (Ringkasan) -->
-<!-- ============================ ABOUT PREVIEW =========================== -->
-<section id="about-preview" class="about-preview section" style="padding-top:32px; padding-bottom:32px;">
-  <div class="container">
-    <div class="card shadow-sm border rounded-3 p-4 p-md-5 my-2">
-      <div class="row align-items-center g-4">
-        <div class="col-md-4 text-center">
-          <img src="assets/img/Profile-hadi.png" alt="Septia Hadi Wardana" class="img-fluid rounded-circle shadow-sm" style="max-width: 160px;" />
-        </div>
-        <div class="col-md-8">
-          <h2>About</h2>
-          <p class="text-muted mb-3">
-            With a background in Geological Engineering and a passion for geospatial data, visualization, design, and AI. Experienced in mining exploration, GIS, and startup building (Top 5 at 1001Startup Regional Kalimantan). Currently focused on data analytics, visualization, and AI-driven projects. I build of YADA Certify and Synthetic Lab, a virtual space to share projects, research, and insights.
-          </p>
-          <a href="about.html" class="btn btn-dark btn-sm">More →</a>
-        </div>
+    <!-- ============================ ACTIVITY (HORIZONTAL SCROLLER) =========================== -->
+    <section id="activity" class="activity section" style="padding-top:32px; padding-bottom:32px;">
+      <div class="container">
+        <div class="card shadow-sm border rounded-3 p-4 p-md-5 my-2 position-relative">
+
+          <div class="section-title" data-aos="fade-up">
+            <h2>Activity</h2>
+            <p>A glimpse of what I do beyond projects: volunteering, mentoring, and community engagements that keep me learning and contributing.</p>
+          </div>
+
+          <!-- Controls -->
+          <button class="btn btn-light border position-absolute top-50 start-0 translate-middle-y d-none d-md-inline-flex activity-prev"
+                  type="button" aria-label="Scroll activities left" style="z-index:2;">
+            <i class="bi bi-chevron-left"></i>
+          </button>
+          <button class="btn btn-light border position-absolute top-50 end-0 translate-middle-y d-none d-md-inline-flex activity-next"
+                  type="button" aria-label="Scroll activities right" style="z-index:2;">
+            <i class="bi bi-chevron-right"></i>
+          </button>
+
+          <!-- Scroller -->
+          <div class="activity-scroller d-flex flex-nowrap gap-3 overflow-auto pb-1" role="region" aria-label="Activity list" tabindex="0" data-aos="fade-up" data-aos-delay="100" style="--activity-gap: 1rem;">
+            <!-- Item 1 -->
+            <div class="activity-card card h-100 shadow-sm border-0">
+              <img src="assets/img/activity/draft.jpg" class="card-img-top rounded-3" alt="Volunteer Geoscience Educator" loading="lazy">
+              <div class="card-body">
+                <h5 class="card-title mb-1">This section is under preparation.</h5>
+                <p class="card-text text-muted mb-0">Work in progress; visuals and detailed narrative will be added shortly.</p>
+              </div>
+            </div>
+            <!-- Item 1 -->
+            <div class="activity-card card h-100 shadow-sm border-0">
+              <img src="assets/img/activity/draft.jpg" class="card-img-top rounded-3" alt="Volunteer Geoscience Educator" loading="lazy">
+              <div class="card-body">
+                <h5 class="card-title mb-1">This section is under preparation.</h5>
+                <p class="card-text text-muted mb-0">Work in progress; visuals and detailed narrative will be added shortly.</p>
+              </div>
+            </div>
+            <!-- Item 1 -->
+            <div class="activity-card card h-100 shadow-sm border-0">
+              <img src="assets/img/activity/draft.jpg" class="card-img-top rounded-3" alt="Volunteer Geoscience Educator" loading="lazy">
+              <div class="card-body">
+                <h5 class="card-title mb-1">This section is under preparation.</h5>
+                <p class="card-text text-muted mb-0">Work in progress; visuals and detailed narrative will be added shortly.</p>
+              </div>
+            </div>
+            <!-- Item 1 -->
+            <div class="activity-card card h-100 shadow-sm border-0">
+              <img src="assets/img/activity/draft.jpg" class="card-img-top rounded-3" alt="Volunteer Geoscience Educator" loading="lazy">
+              <div class="card-body">
+                <h5 class="card-title mb-1">This section is under preparation.</h5>
+                <p class="card-text text-muted mb-0">Work in progress; visuals and detailed narrative will be added shortly.</p>
+              </div>
+            </div>
+          </div><!-- /.activity-scroller -->
+        </div><!-- /.card -->
       </div>
-    </div><!-- .card -->
-  </div>
-</section>
-</main>
+    </section>
 
-<!-- Footer -->
-<!-- ============================== FOOTER ============================== -->
-<footer id="footer" class="footer accent-background">
-  <div class="container text-center">
+  </main>
 
-    <!-- Social Media -->
-    <div class="social-links d-flex justify-content-center mb-3">
-      <a href="https://www.instagram.com/septiahadi_" target="_blank" rel="noreferrer noopener"><i class="bi bi-instagram"></i></a>
-      <a href="https://www.linkedin.com/in/septiahadi" target="_blank" rel="noreferrer noopener"><i class="bi bi-linkedin"></i></a>
-      <a href="https://github.com/septiahadi" target="_blank" rel="noreferrer noopener"><i class="bi bi-github"></i></a>
-      <a href="https://medium.com/@septiahadi" target="_blank" rel="noreferrer noopener"><i class="bi bi-medium"></i></a>
-      <a href="https://www.behance.net/septiahadi" target="_blank" rel="noreferrer noopener"><i class="bi bi-behance"></i></a>
+  <!-- ============================== FOOTER ============================== -->
+  <footer id="footer" class="footer accent-background">
+    <div class="container text-center">
+
+      <div class="social-links d-flex justify-content-center mb-3">
+        <a href="https://www.behance.net/septiahadi" target="_blank" rel="noopener" aria-label="Behance"><i class="bi bi-behance" aria-hidden="true"></i></a>
+        <a href="https://github.com/septiahadi" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
+        <a href="https://medium.com/@septiahadi" target="_blank" rel="noopener" aria-label="Medium"><i class="bi bi-medium" aria-hidden="true"></i></a>
+        <a href="https://www.researchgate.net/profile/Septia-Hadi-Wardana" target="_blank" rel="noopener" aria-label="ResearchGate"><i class="bi bi-mortarboard" aria-hidden="true"></i></a>
+        <a href="https://www.linkedin.com/in/septiahadi" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin" aria-hidden="true"></i></a>
+        <a href="https://www.instagram.com/septiahadi_" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+      </div>
+
+      <hr class="my-3" style="border-color: rgba(181, 181, 181, 0.2);">
+
+      <div class="copyright">
+        <p>© 2024 - <span></span>
+          <strong class="px-1 sitename">Synthetic Lab</strong>
+          <span>All Rights Reserved | Designed by BootstrapMade | Edited with Vibe Coding</span>
+        </p>
+      </div>
     </div>
-
-    <!-- Garis -->
-    <hr class="my-3" style="border-color: rgba(181, 181, 181, 0.2);" />
-
-    <!-- Copyright -->
-    <div class="copyright">
-      <p>© <span></span>
-        <strong class="px-1 sitename">Septia Hadi Wardana</strong>
-        <span>All Rights Reserved | Designed by BootstrapMade | Edited with ChatGPT</span>
-      </p>
-    </div>
-
-  </div>
-</footer>
+  </footer>
 
   <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center" aria-label="Scroll to top">
+    <i class="bi bi-arrow-up-short" aria-hidden="true"></i>
+  </a>
 
   <!-- Preloader -->
-  <div id="preloader"></div>
+  <div id="preloader" aria-hidden="true"></div>
 
-  <!-- Vendor JS -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <!-- Vendor JS (only what’s used here) -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+  <script src="assets/vendor/aos/aos.js" defer></script>
+  <script src="assets/vendor/typed.js/typed.umd.js" defer></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js" defer></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js" defer></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js" defer></script>
 
   <!-- Main JS -->
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>

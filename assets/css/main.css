@@ -411,3 +411,34 @@ footer.footer {
 .about-page #education p:first-of-type {
   margin-top: 0; 
 }
+
+/* Activity scroller: fix mobile/tablet horizontal layout */
+.activity-scroller {
+  display: flex;                 /* already in HTML, just enforce */
+  flex-wrap: nowrap;             /* jangan pindah baris */
+  overflow-x: auto;              /* scroll ke samping */
+  overflow-y: hidden;            /* cegah memanjang ke bawah */
+  gap: var(--activity-gap, 1rem);
+  scroll-snap-type: x mandatory; /* smooth snap antar kartu */
+  -webkit-overflow-scrolling: touch;
+}
+
+.activity-scroller .activity-card {
+  flex: 0 0 280px;               /* lebar “slide” default */
+  scroll-snap-align: start;
+}
+
+@media (min-width: 576px) {
+  .activity-scroller .activity-card { flex-basis: 320px; }
+}
+@media (min-width: 992px) {
+  .activity-scroller .activity-card { flex-basis: 360px; }
+}
+
+/* Gambar biar konsisten, gak bikin kartu tinggi berlebihan */
+.activity-scroller .activity-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;          /* lock proporsi */
+  object-fit: cover;
+  border-radius: .75rem;
+}

@@ -442,3 +442,35 @@ footer.footer {
   object-fit: cover;
   border-radius: .75rem;
 }
+
+/* Portfolio: fix kolom di tablet portrait (Isotope + Bootstrap) */
+#portfolio-grid { position: relative; }
+#portfolio-grid .portfolio-item { box-sizing: border-box; }
+
+@media (max-width: 767.98px) {
+  #portfolio-grid .portfolio-item { width: 100%; }     /* 1 kolom di HP */
+}
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  #portfolio-grid .portfolio-item { width: 50%; }       /* 2 kolom di tablet portrait/landscape */
+}
+@media (min-width: 1200px) {
+  #portfolio-grid .portfolio-item { width: 33.3333%; }  /* 3 kolom di desktop */
+}
+
+/* Custom style for mobile nav toggle */
+.mobile-nav-toggle {
+  border: none;
+  background: transparent;
+  font-size: 1.8rem;
+  color: #fff;                  /* samain dengan header */
+  transition: transform .3s ease, color .3s ease;
+}
+
+.mobile-nav-toggle:hover {
+  color: var(--accent-color);   /* hover effect */
+}
+
+.mobile-nav-active .mobile-nav-toggle {
+  color: var(--accent-color);
+  transform: rotate(90deg);     /* animasi kecil pas aktif */
+}

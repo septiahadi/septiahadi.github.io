@@ -68,7 +68,6 @@ const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
     .map(s => s.trim())
     .filter(Boolean);
   if (!items.length) return;
-  /* eslint-disable no-new */
   new Typed(".typed", {
     strings: items,
     typeSpeed: 60,

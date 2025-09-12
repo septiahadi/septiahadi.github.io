@@ -4,32 +4,29 @@
   - Kept: global tokens, header, nav (desktop/mobile), hero, portfolio grid + filters, cards, section-title, scroll-top, preloader, footer, minor utilities.
   - Fonts: Roboto 300/400/500/700; Poppins 400/500/600; Space Grotesk 300–700.
   - Libraries aktif: Bootstrap, Bootstrap Icons, AOS, GLightbox, Isotope, imagesLoaded, Typed.js.
-  - Visual parity: required; nilai token ditarik dari tampilan index saat ini.
+  - Visual parity: required; nilai token dari tampilan saat ini.
 */
 
-/* ============================================================================
-   0) TOKENS
-============================================================================ */
+/* ============================================================================ */
+/* 0) TOKENS */
+/* ============================================================================ */
 :root {
-  /* Colors */
-  --color-bg: #e2e2e2;            /* page/section background (light) */
-  --color-bg-alt: #060606;        /* dark hero bg */
-  --color-text: #bababa;          /* body text default */
-  --color-heading: #0a090f;       /* headings */
-  --color-accent: #3071e9;        /* primary accent */
-  --color-surface: #ffffff;       /* cards/surfaces */
-  --color-contrast: #ffffff;      /* text on dark/accent */
+  --color-bg: #e2e2e2;
+  --color-bg-alt: #060606;
+  --color-text: #bababa;
+  --color-heading: #0a090f;
+  --color-accent: #3071e9;
+  --color-surface: #ffffff;
+  --color-contrast: #ffffff;
 
-  /* Radii & shadows */
   --radius-lg: 1rem;
   --shadow-md: 0 10px 24px rgba(0,0,0,.07);
 
-  /* Rhythm */
   --section-pad: 30px;
   --gap-card: 1rem;
   --gap-body: .25rem;
 
-  /* Back-compat for older rules */
+  /* Back-compat tokens */
   --background-color: var(--color-bg);
   --default-color: var(--color-text);
   --heading-color: var(--color-heading);
@@ -37,7 +34,7 @@
   --surface-color: var(--color-surface);
   --contrast-color: var(--color-contrast);
 
-  /* Nav */
+  /* Nav palette */
   --nav-color: #ffffff;
   --nav-hover-color: #ffffff;
   --nav-mobile-background-color: #ffffff;
@@ -69,9 +66,9 @@
   --contrast-color: #ffffff;
 }
 
-/* ============================================================================
-   1) GLOBAL BASICS
-============================================================================ */
+/* ============================================================================ */
+/* 1) GLOBAL BASICS */
+/* ============================================================================ */
 *,
 *::before,
 *::after { box-sizing: border-box; }
@@ -108,9 +105,9 @@ a:hover { color: color-mix(in srgb, var(--accent-color), transparent 25%); }
 /* Heading → paragraph rhythm */
 h1 + p, h2 + p, h3 + p { margin-top: var(--gap-body); }
 
-/* ============================================================================
-   2) HEADER
-============================================================================ */
+/* ============================================================================ */
+/* 2) HEADER */
+/* ============================================================================ */
 .header {
   --background-color: #000000;
   --default-color: #ffffff;
@@ -127,10 +124,10 @@ h1 + p, h2 + p, h3 + p { margin-top: var(--gap-body); }
 .header .logo h1 { font-size: 30px; margin: 0; font-weight: 700; color: var(--heading-color); }
 .scrolled .header { box-shadow: 0 0 18px rgba(0, 0, 0, 0.1); }
 
-/* ============================================================================
-   3) NAVIGATION (desktop & mobile)
-   Safelist states to avoid purge: .active, .show, .open, .collapsed
-============================================================================ */
+/* ============================================================================ */
+/* 3) NAVIGATION (desktop & mobile) */
+/* Safelist states: .active, .show, .open, .collapsed */
+/* ============================================================================ */
 /* Desktop */
 @media (min-width: 1200px) {
   .navmenu { padding: 0; }
@@ -204,9 +201,9 @@ h1 + p, h2 + p, h3 + p { margin-top: var(--gap-body); }
   .mobile-nav-active .navmenu>ul { display: block; }
 }
 
-/* ============================================================================
-   4) FOOTER
-============================================================================ */
+/* ============================================================================ */
+/* 4) FOOTER */
+/* ============================================================================ */
 .footer {
   color: var(--default-color);
   background-color: var(--background-color);
@@ -236,9 +233,9 @@ h1 + p, h2 + p, h3 + p { margin-top: var(--gap-body); }
 .footer .credits { margin-top: 10px; font-size: 13px; }
 .footer .credits a { color: color-mix(in srgb, var(--default-color), transparent 30%); }
 
-/* ============================================================================
-   5) PRELOADER & SCROLL TOP
-============================================================================ */
+/* ============================================================================ */
+/* 5) PRELOADER & SCROLL TOP */
+/* ============================================================================ */
 #preloader {
   position: fixed; inset: 0; z-index: 999999; overflow: hidden;
   background: var(--background-color); transition: all .6s ease-out;
@@ -259,9 +256,9 @@ h1 + p, h2 + p, h3 + p { margin-top: var(--gap-body); }
 .scroll-top:hover, #scroll-top:hover { background-color: color-mix(in srgb, var(--accent-color), transparent 20%); color: var(--contrast-color); }
 .scroll-top.active, #scroll-top.active { visibility: visible; opacity: 1; bottom: 15px; }
 
-/* ============================================================================
-   6) SECTIONS + TITLES
-============================================================================ */
+/* ============================================================================ */
+/* 6) SECTIONS + TITLES */
+/* ============================================================================ */
 section, .section {
   color: var(--default-color);
   background-color: var(--background-color);
@@ -286,9 +283,9 @@ section, .section {
 .about-page .section .section-title h2 { margin-bottom: .25rem; }
 .about-page #about-me .section-title + p { margin-top: 0; }
 
-/* ============================================================================
-   7) HERO
-============================================================================ */
+/* ============================================================================ */
+/* 7) HERO */
+/* ============================================================================ */
 .hero {
   width: 100%;
   min-height: calc(100vh - 92px);
@@ -309,10 +306,10 @@ section, .section {
 .hero .social-links a { font-size: 25px; color: #b2b2b2; transition: color .3s; }
 .hero .social-links a:hover { color: #ffffff; }
 
-/* ============================================================================
-   8) PORTFOLIO (filters + cards)
-   Safelist: .portfolio-item, .filter-btn, .geoscience, .gis, .data, .consulting, #portfolio-grid
-============================================================================ */
+/* ============================================================================ */
+/* 8) PORTFOLIO (filters + cards) */
+/* Safelist: .portfolio-item, .filter-btn, .geoscience, .gis, .data, .consulting, #portfolio-grid */
+/* ============================================================================ */
 .portfolio .portfolio-filters {
   padding: 0; margin: 0 auto 20px auto; list-style: none; text-align: center;
 }
@@ -330,45 +327,43 @@ section, .section {
 }
 .portfolio .portfolio-item { position: relative; }
 
-/* ============================================================================
-   9) RESEARCH LAB
-============================================================================ */
+/* ============================================================================ */
+/* 9) RESEARCH LAB */
+/* ============================================================================ */
 #research .lab-figure img { border-radius: var(--radius-lg); }
 #research .lab-copy h2 { font-size: 32px; font-weight: 700; }
 #research .lab-copy p { font-size: 16px; margin-bottom: 16px; }
 
-/* ============================================================================
-   10) ABOUT PREVIEW (index)
-============================================================================ */
+/* ============================================================================ */
+/* 10) ABOUT PREVIEW (index) */
+/* ============================================================================ */
 .about-preview img { max-width: 160px; border-radius: 999px; }
 .about-preview h2 { font-size: 28px; font-weight: 700; }
 .about-preview p { font-size: 15px; }
 
-/* ============================================================================
-   11) CARDS + MICRO-INTERACTION
-============================================================================ */
+/* ============================================================================ */
+/* 11) CARDS + MICRO-INTERACTION */
+/* ============================================================================ */
 .card, .border.rounded-3 { transition: transform .18s ease, box-shadow .18s ease; }
 .card:hover, .border.rounded-3:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
 img.card-img-top { display: block; width: 100%; height: auto; border-top-left-radius: .375rem; border-top-right-radius: .375rem; }
 
-/* Grid gap helper if needed */
+/* Grid gap helper */
 .cards-grid { gap: var(--gap-card); }
 
-/* ============================================================================
-   12) UTILITIES
-============================================================================ */
+/* ============================================================================ */
+/* 12) UTILITIES */
+/* ============================================================================ */
 hr.my-0 { border: 0; height: 1px; background: linear-gradient(90deg, rgba(0,0,0,.08), rgba(0,0,0,.02)); }
 
-/* Hover hints kept for library */
 #library a.d-block { transition: all .2s; }
 #library a.d-block:hover { border-color: #00d084; box-shadow: 0 0 0 2px rgba(0, 208, 132, .15); }
 
-/* AOS delay collapse on small screens */
 @media (max-width: 768px) { [data-aos-delay] { transition-delay: 0 !important; } }
 
-/* ============================================================================
-   13) SAFELIST (do not remove; used by libs or future states)
-============================================================================ */
+/* ============================================================================ */
+/* 13) SAFELIST (do not remove; used by libs or future states) */
+/* ============================================================================ */
 /* .active, .is-active, .open, .show, .hidden, .visually-hidden, .sr-only,
    .portfolio-item, #portfolio-grid, .filter-btn,
    .geoscience, .gis, .data, .consulting,
@@ -376,101 +371,76 @@ hr.my-0 { border: 0; height: 1px; background: linear-gradient(90deg, rgba(0,0,0,
    .bi
 */
 
-/* Footer override khusus (taruh di paling bawah main.css) */
+/* Footer override */
 footer.footer {
-  --background-color: #111111; /* background baru footer */
-  --default-color: #f1f1f1;    /* teks */
-  --heading-color: #ffffff;    /* judul/heading */
-  --accent-color: #ffffff;     /* link hover/underline */
+  --background-color: #111111;
+  --default-color: #f1f1f1;
+  --heading-color: #ffffff;
+  --accent-color: #ffffff;
 }
 
-/* About: align underline accent to the left of the heading */
+/* About underline alignment */
 @media (min-width: 768px) {
-  .about-page .section .section-title { 
-    text-align: left;                 /* paksa container title rata kiri */
-  }
-  .about-page .section .section-title h2::after {
-    left: 0;                          /* anchor ke kiri */
-    right: auto; 
-    margin: 0;                        /* jangan center */
-  }
+  .about-page .section .section-title { text-align: left; }
+  .about-page .section .section-title h2::after { left: 0; right: auto; margin: 0; }
 }
 
-/* About page: tighter spacing under titles */
+/* About spacing */
 .about-page .section .section-title {
-  padding-bottom: 20px;   /* lebih pendek dari default 60px */
-  margin-bottom: .5rem;   /* ganti dari mb-3 */
+  padding-bottom: 20px;
+  margin-bottom: .5rem;
   text-align: left;
 }
 .about-page .section .section-title h2 {
-  margin-bottom: .25rem;  /* judul lebih rapat dengan narasi */
-  padding-bottom: 0;      /* hilangkan padding bawah ekstra */
+  margin-bottom: .25rem;
+  padding-bottom: 0;
 }
-
 .about-page #about-me p:first-of-type,
-.about-page #education p:first-of-type {
-  margin-top: 0; 
-}
+.about-page #education p:first-of-type { margin-top: 0; }
 
-/* Activity scroller: fix mobile/tablet horizontal layout */
+/* ============================================================================ */
+/* 14) ACTIVITY SCROLLER */
+/* ============================================================================ */
 .activity-scroller {
-  display: flex;                 /* already in HTML, just enforce */
-  flex-wrap: nowrap;             /* jangan pindah baris */
-  overflow-x: auto;              /* scroll ke samping */
-  overflow-y: hidden;            /* cegah memanjang ke bawah */
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
   gap: var(--activity-gap, 1rem);
-  scroll-snap-type: x mandatory; /* smooth snap antar kartu */
+  scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
 }
-
-.activity-scroller .activity-card {
-  flex: 0 0 280px;               /* lebar “slide” default */
-  scroll-snap-align: start;
-}
-
-@media (min-width: 576px) {
-  .activity-scroller .activity-card { flex-basis: 320px; }
-}
-@media (min-width: 992px) {
-  .activity-scroller .activity-card { flex-basis: 360px; }
-}
-
-/* Gambar biar konsisten, gak bikin kartu tinggi berlebihan */
+.activity-scroller .activity-card { flex: 0 0 280px; scroll-snap-align: start; }
+@media (min-width: 576px) { .activity-scroller .activity-card { flex-basis: 320px; } }
+@media (min-width: 992px) { .activity-scroller .activity-card { flex-basis: 360px; } }
 .activity-scroller .activity-card img {
   width: 100%;
-  aspect-ratio: 16 / 9;          /* lock proporsi */
+  aspect-ratio: 16 / 9;
   object-fit: cover;
   border-radius: .75rem;
 }
 
-/* Portfolio: fix kolom di tablet portrait (Isotope + Bootstrap) */
+/* ============================================================================ */
+/* 15) PORTFOLIO GRID WIDTH FIXES (Isotope + Bootstrap) */
+/* ============================================================================ */
 #portfolio-grid { position: relative; }
 #portfolio-grid .portfolio-item { box-sizing: border-box; }
+@media (max-width: 767.98px) { #portfolio-grid .portfolio-item { width: 100%; } }
+@media (min-width: 768px) and (max-width: 1199.98px) { #portfolio-grid .portfolio-item { width: 50%; } }
+@media (min-width: 1200px) { #portfolio-grid .portfolio-item { width: 33.3333%; } }
 
-@media (max-width: 767.98px) {
-  #portfolio-grid .portfolio-item { width: 100%; }     /* 1 kolom di HP */
-}
-@media (min-width: 768px) and (max-width: 1199.98px) {
-  #portfolio-grid .portfolio-item { width: 50%; }       /* 2 kolom di tablet portrait/landscape */
-}
-@media (min-width: 1200px) {
-  #portfolio-grid .portfolio-item { width: 33.3333%; }  /* 3 kolom di desktop */
-}
-
-/* Custom style for mobile nav toggle */
+/* ============================================================================ */
+/* 16) MOBILE NAV TOGGLE POLISH */
+/* ============================================================================ */
 .mobile-nav-toggle {
   border: none;
   background: transparent;
   font-size: 1.8rem;
-  color: #fff;                  /* samain dengan header */
+  color: #fff;
   transition: transform .3s ease, color .3s ease;
 }
-
-.mobile-nav-toggle:hover {
-  color: var(--accent-color);   /* hover effect */
-}
-
+.mobile-nav-toggle:hover { color: var(--accent-color); }
 .mobile-nav-active .mobile-nav-toggle {
   color: var(--accent-color);
-  transform: rotate(90deg);     /* animasi kecil pas aktif */
+  transform: rotate(90deg);
 }
